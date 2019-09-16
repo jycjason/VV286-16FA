@@ -1,0 +1,298 @@
+\documentclass{beamer}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{mathrsfs}
+\usepackage{extarrows}
+\usepackage{bbm} 
+\setbeamercolor{footcolor}{fg=blue!100} % 设置字体和背景颜色
+\setbeamertemplate{headline}{%
+  \leavevmode%
+  \hbox{%
+    \hskip228pt
+    \begin{beamercolorbox}[wd=.126\paperwidth,ht=2.25ex,dp=1ex,right]{footcolor}%      
+       \textcolor[rgb]{0,0.168,0.376}{Slide \insertframenumber{} }
+    \end{beamercolorbox}}%
+  \vskip-19pt%
+}
+
+\setbeamertemplate{frametitle}
+{
+\vspace{30pt}\textcolor[rgb]{0,0.168,0.376}{\insertframetitle}
+}
+
+ 
+\pgfdeclareimage[height=0.61cm]{university-logo}{logo.png}  
+\logo{\pgfuseimage{university-logo}{\vspace{244pt}}} 
+\title{\textcolor[rgb]{0,0.168,0.376}{VV286 Review 1}}
+\author{JIANG Yicheng}
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Separable Equations}
+\begin{block}{}
+
+$$\dfrac{dy}{dx}=f(x)g(y),\hspace{9mm}y(\xi)=\eta$$
+\begin{enumerate}
+\item $g(\eta)\neq0$
+
+
+$$\int_{\eta}^y\dfrac{ds}{g(s)}=\int_{\xi}^xf(t)dt\hspace{10mm} \text{(Unique solution)}$$
+\item $g(\eta)=0$
+\begin{enumerate}
+\item Obvious solution
+$$y(x)=\eta$$
+\item Check $\int_{\eta}^y\dfrac{ds}{g(s)}$ in a small neighbourhood of $\eta$
+\end{enumerate}
+\end{enumerate}
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Linear Equations}
+\begin{block}{}
+$$a_1(x)y'+a_0(x)y=f(x) $$
+\begin{enumerate}
+\item Solve  $a_1(x)y'+a_0(x)y=0$ to find $y_{\text{hom}}$.
+\item Use $y_{\text{hom}}$ to find $y_{\text{part}}$.
+ Set $y_{\text{part}}(x)=c(x)y_{\text{hom}}(x)$, then solve $c(x)$.
+ 
+\end{enumerate}
+$$y=y_{\text{part}}+C\cdot y_{\text{hom}}$$
+\end{block}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Transformable Equations}
+\begin{block}{$y'=f(ax+by+c);b\neq0$}
+$$u(x)=ax+by(x)+c$$
+\end{block}
+\begin{block}{$y'=f(y/x)$}
+$$u(x)=\dfrac{y(x)}{x}$$
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\begin{block}{$y'+gy+hy^{\alpha}=0,\alpha\neq1$ (Bernoulli's equation)}
+$$u(x)=(y(x))^{1-\alpha}$$
+\begin{align*}
+&y'+gy+hy^\alpha=0\\
+\Rightarrow& (1-\alpha)y^{-\alpha}y'+(1-\alpha)gy^{1-\alpha}+(1-\alpha)h=0\\
+\Rightarrow& (y^{1-\alpha})'+(1-\alpha)gy^{1-\alpha}+(1-\alpha)h=0\\
+\Rightarrow& u'+(1-\alpha)gu+(1-\alpha)h=0
+\end{align*}
+\begin{block}{Note}
+\begin{enumerate}
+\item $\alpha>0$, $y=0$
+\item $\alpha$ is odd, $y_-=-y_+$
+\end{enumerate}
+\end{block}
+\end{block}
+\end{frame}
+
+\begin{frame}
+\begin{block}{$y'+gy+hy^2=k$ (Ricatti's equation)}
+\begin{enumerate}
+\item Guess or given a solution $\phi$
+\item For other solution $y$, set $u=y-\phi$, then
+\begin{align*}
+&\left\{
+\begin{aligned}
+y'+gy+hy^2=k\\
+\phi'+g\phi+h\phi^2=k\\
+\end{aligned}
+\right.\\\Rightarrow & (y'-\phi')+g(y-\phi)+h(y-\phi)(y+\phi)=0\\
+\Rightarrow&u'+gu+hu(u+2\phi)=0\\
+\Rightarrow&u'+(g+2\phi h)u+hu^2=0
+\end{align*}
+\end{enumerate}
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{$h(x,y)y'+g(x,y)=0$}
+$$h(x,y)y'+g(x,y)=0\Rightarrow\langle\begin{pmatrix}
+1\\
+y'
+\end{pmatrix},\begin{pmatrix}
+g(x,y)\\
+h(x,y)
+\end{pmatrix}\rangle=0$$
+Find a potential function $U(x,y)$ whose gradient at each point is parallel to the vector $\begin{pmatrix}
+g(x,y)\\h(x,y)
+\end{pmatrix}$ i.e.
+$$\nabla U(x,y)=M(x,y)\cdot \begin{pmatrix}
+g(x,y)\\h(x,y)
+\end{pmatrix}$$
+Then for any constant C, $U(x,y)=C$ is a solution.
+
+
+\end{frame}
+
+
+\begin{frame}
+\begin{block}{Requirement}
+%If $D$ is open, simply connected and $g,h,M\in C^1(D)$,
+$$\dfrac{\partial M(x,y)g(x,y)}{\partial y}=\dfrac{\partial M(x,y)h(x,y)}{\partial x}\hspace{2mm}\text{(Rotation is zero)}$$
+i.e.
+$$\hspace{2mm}\dfrac{\partial M}{\partial y}g+M\dfrac{\partial g}{\partial y}=\dfrac{\partial M}{\partial x}h+M\dfrac{\partial h}{\partial x}$$
+
+\end{block}
+
+\begin{block}{Assumption}
+\begin{enumerate}
+\item $M$ depends only on $x$ or only on $y$
+\item $M$ depends only on $x\cdot y$
+\end{enumerate}
+\end{block}
+\begin{block}{Exercise 1.9}
+$$\Big(\dfrac{x^2}{y}+3\dfrac{y}{x}\Big)y'+\Big(3x+\dfrac{6}{y}\Big)=0$$
+\end{block}
+
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Implict Differential Equations}
+\begin{block}{Slope parametrization}
+Given $y''$ exists and $y''\neq0$, $y'$ is monotonic function of $x$. We can use slope to parametrize the solution curve.
+
+$$p=y'(x)=y'(x(p))$$
+$$\dfrac{dy(p)}{dp}=\dfrac{d}{dp}y(x(p))=\dfrac{dy}{dx}\Big|_{x=x(p)}\cdot \dfrac{dx(p)}{dp}=p\cdot\dfrac{dx(p)}{dp}$$
+\end{block}
+\begin{block}{$F(y,y';x)=0$}
+\begin{enumerate}
+\item Try to use slope parametrization. Solve
+$$F(y(p),p;x(p))=0,y'(p)=px'(p)$$
+\item Straight line solution.
+\end{enumerate}
+
+\end{block}
+
+\end{frame}
+
+\begin{frame}
+\begin{block}{General Implicit Differential Equation}
+Use slope parametrization,
+\begin{align*}
+&F(y,y';x)=0\\
+\Rightarrow&F(y(p),p;x(p))=0\\
+\xLongrightarrow{\partial/\partial p}& F_x\dot{x}+F_y\dot{y}+F_p=0\\
+\xLongrightarrow{y'(p)=px'(p)}&\dot{x}=-\dfrac{F_p}{F_x+pF_y},\hspace{3mm}\dot{y}=-\dfrac{pF_p}{F_x+pF_y}
+\end{align*}
+\end{block}
+\end{frame}
+
+\begin{frame}
+\begin{block}{$y=xy'+g(y')$ (Clairaut's equation)}
+Assume $g\in C^1(I)$ for some interval $I$. 
+\begin{enumerate}
+\item Use slope parametrization, $y(p)=x(p)\cdot p+g(p)$, then
+$$y'(p)=px'(p)+x(p)+g'(p)$$
+Since $y'(p)=px'(p)$, 
+$$x(p)=-g'(p),\hspace{3mm}y(p)=-pg'(p)+g(p)$$
+\item Straight line solution:
+$y=cx+g(c),c\in I$
+\end{enumerate} 
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\begin{block}{$y=xf(y')+g(y')$ (d'Alembert's equation)}
+Assume $f,g\in C^1(I)$ for some interval $I$. 
+\begin{enumerate}
+\item Use slope parametrization, $y(p)=x(p)\cdot f(p)+g(p)$, then
+$$y'(p)=f(p)x'(p)+f'(p)x(p)+g'(p)$$
+Since $y'(p)=px'(p)$, $x'(p)=\dfrac{f'(p)x(p)+g'(p)}{p-f(p)}$
+\item Straight line $y=cx+d$ is solution if and only if $c=f(c),d=g(c)$
+\end{enumerate} 
+\end{block}
+\end{frame}
+
+\begin{frame}
+\frametitle{Concept}
+\begin{block}{Equilibrium solution}
+$$x_{equi}(t)=constant$$
+\end{block}
+
+\begin{block}{Steady-state solution}
+$$x_{ss}(t)=\lim_{t\rightarrow\infty}x(t)$$
+\end{block}
+
+\begin{block}{Transient solution}
+$$x(t)-x_{ss}$$
+\end{block}
+\end{frame}
+
+\begin{frame}
+\begin{block}{Steady-state solution is
+often (but not always) equal to the equilibrium solution}
+\begin{align*}
+&y=\dfrac{1}{1-e^{-x}}\\
+\Rightarrow&y'=-\dfrac{e^{-x}}{(1-e^{-x})^2}=\dfrac{1-e^{-x}-1}{(1-e^{-x})^2}=y-y^2\\
+\Rightarrow&y'=y(1-y)
+\end{align*}
+Equilibrium solution: $y_1=1,$ $y_2=0$
+
+Steady-state solution: $y_{ss}(x)=\lim\limits_{x\rightarrow\infty}\dfrac{1}{1-e^{-x}}=1$
+\end{block}
+\end{frame}
+
+\begin{frame}
+$$a_1(x)y'+a_0(x)y=f(x),\hspace{3mm}y(\xi)=\eta$$
+\begin{block}{Differential Operator}
+$L=a_1\dfrac{d}{dx}+a_0$
+\end{block}
+\begin{block}{Homogeneous/Inhomogeneous}
+$f(x)=0$ for all $x\in I$; $\exists x\in I$, $f(x)\neq0$.
+\end{block}
+\begin{block}{Initial Condition}
+$\eta$ is called initial condition for $y$.
+
+$\eta=0$ homogeneous initial condition
+\end{block}
+\begin{block}{Data}
+The pair $\lbrace f,\eta\rbrace$
+\end{block}
+\begin{block}{Singular Point}
+If $a_1(x_0) = 0$, we say that $x_0$ is a singular point for $L$.
+\end{block}
+
+\end{frame}
+\begin{frame}
+\begin{block}{Implicit Equation}
+If $F(y_0, p_0; x_0) = 0$ and $F(y,p;x)=0$ can be solved for $p$ as a
+function of $x$ and $y$ in some neighborhood $U$ of $(x_0, y_0, p_0)$, then $(x_0, y_0, p_0)$ is said to be a \textbf{\textit{regular line element}}, otherwise a \textbf{\textit{singular line element}}.
+\end{block}
+\begin{block}{}
+A solution $y$ of the implicit ODE $F(y, y'; x) = 0$ is said to be \textbf{\textit{regular}} on an interval $I \subset \mathbb{R}$ if for all $x \in I$ the line elements $(x, y(x), y'(x))$ are regular.
+\end{block}
+\begin{block}{}
+A point $(x, y)$ is said to be a \textbf{\textit{singular point}} of the ODE if there
+exists a singular line element $(x, y, p)$.
+\end{block}
+\end{frame}
+\begin{frame}
+\begin{block}{Envelope}
+A one-parameter family of smooth curves in $\mathbb{R}^2$ is a
+set 
+$$\mathcal{F} =\lbrace \mathcal{C}_s , s \in I\rbrace$$
+where $I \subset \mathbb{R}$ is some interval and each $\mathcal{C}_s$ is a smooth curve.
+
+An \textbf{\textit{envelope}} of $\mathcal{F}$ is a curve $\mathcal{E}$ such that every point of $\mathcal{E}$ is tangent to a curve in $\mathcal{F}$.
+\end{block}
+
+\end{frame}
+
+\end{document}

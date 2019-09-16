@@ -1,0 +1,347 @@
+\documentclass{beamer}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{mathrsfs}
+\usepackage{extarrows}
+\usepackage{bbm} 
+\setbeamercolor{footcolor}{fg=blue!100} % 设置字体和背景颜色
+\setbeamertemplate{headline}{%
+  \leavevmode%
+  \hbox{%
+    \hskip228pt
+    \begin{beamercolorbox}[wd=.126\paperwidth,ht=2.25ex,dp=1ex,right]{footcolor}%      
+       \textcolor[rgb]{0,0.168,0.376}{Slide \insertframenumber{} }
+    \end{beamercolorbox}}%
+  \vskip-19pt%
+}
+
+\setbeamertemplate{frametitle}
+{
+\vspace{30pt}\textcolor[rgb]{0,0.168,0.376}{\insertframetitle}
+}
+
+ 
+\pgfdeclareimage[height=0.61cm]{university-logo}{logo.png}  
+\logo{\pgfuseimage{university-logo}{\vspace{244pt}}} 
+\title{\textcolor[rgb]{0,0.168,0.376}{VV286 RC1}}
+\author{JIANG Yicheng}
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Separable Equations}
+\begin{block}{Initial Value Problem (I.V.P.)}
+$f$ is continuous in an interval $I_x\subset \mathbb{R}$; $g$ is continuous in an interval $I_y\subset \mathbb{R}$; $\xi\in I_x, \eta\in I_y$ 
+$$\dfrac{dy}{dx}=f(x)g(y),\hspace{9mm}y(\xi)=\eta$$
+\end{block}
+
+
+\end{frame}
+\begin{frame}
+\begin{block}{Solution}
+\begin{enumerate}
+\item $g(\eta)\neq0$
+
+
+$$\int_{\eta}^y\dfrac{ds}{g(s)}=\int_{\xi}^xf(t)dt\hspace{10mm} \text{(Unique solution)}$$
+\item $g(\eta)=0$
+\begin{enumerate}
+\item Obvious solution
+$$y(x)=\eta$$
+\item Check $$\int_{\eta}^y\dfrac{ds}{g(s)}$$
+in a small neighbourhood of $\eta$
+\end{enumerate}
+\end{enumerate}
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\begin{block}{Example}
+$$\dfrac{dy}{dx}=x^4y+x^4y^4, \hspace{9mm}y(0)=1$$
+$$y(0)=0?\,\,\,y(0)=-\dfrac{1}{2}?\,\,\,y(0)=-1?\,\,\,y(0)=-2?$$
+
+\end{block}
+\end{frame}
+
+\begin{frame}
+\begin{block}{Solution}
+\begin{align*}
+\int x^4dx&=\int \dfrac{1}{y+y^4}dy\\
+\dfrac{1}{5}x^5&=\int \dfrac{1}{y}-\dfrac{y^2}{1+y^3}dy\\
+\dfrac{1}{5}x^5&=\ln |y|-\dfrac{1}{3}\ln |1+y^3|+C\\
+e^{3x^5/5}&=C\Bigg(\dfrac{y^3}{1+y^3}\Bigg)\\
+\end{align*}
+$$C=2\hspace{2mm}(y(0)=1);C=\dfrac{7}{8}\hspace{2mm}(y(0)=-2);C=-7\hspace{2mm}(y(0)=-\dfrac{1}{2})$$
+\end{block}
+\end{frame}
+
+\begin{frame}
+\begin{block}{Equilibrium solution}
+$$x_{equi}(t)=constant$$
+\end{block}
+
+\begin{block}{Steady-state solution}
+$$x_{ss}(t)=\lim_{t\rightarrow\infty}x(t)$$
+\end{block}
+
+\begin{block}{Transient solution}
+$$x(t)-x_{ss}$$
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Linear Equations}
+A general linear, first-order ODE on an open interval $I\in\mathbb{R}$
+$$a_1(x)y'+a_0(x)y=f(x),\hspace{3mm}x\in I $$
+where $a_0,a_1,f$ is continuous, real-valued functions on $I$.
+\end{frame}
+
+\begin{frame}
+\begin{block}{Solution}
+$$y_{\text{inhom}}=y_{\text{part}}+C\cdot y_{\text{hom}}$$
+where 
+$y_{\text{hom}}$ is one solution of $a_1(x)y'+a_0(x)y=0$
+\end{block}
+\begin{block}{How to find a $y_{\text{part}}$?}
+\end{block}
+\end{frame}
+
+\begin{frame}
+\begin{block}{Variation of Parameters}
+Set $y_{\text{inhom}}=c(x)y_{\text{hom}}(x)$, then
+$$a_1(x)c'(x)y_{\text{hom}}(x)+\underbrace{a_1(x)c(x)y'_{\text{hom}}(x)+a_0(x)c(x)y_{\text{hom}}(x)}_{=0}=f(x)$$
+solve $c(x)$.
+\end{block}
+\end{frame}
+
+\begin{frame}
+\begin{block}{Duhamel's Principle}
+Let $I\subset\mathbb{R}$ be an open interval, $x_0\in\overline{I}$, and $a_0,a_1,f$ continuous, real-valued functions on $\overline{I}$, where $a_1(x)\neq0$ for all $x\in\overline{I}$. Let $y_{\xi}$ solve the initial value problem
+$$a_1(x)y'+a_0(x)y=0,\hspace{3mm}y_{\xi}(\xi)=\dfrac{1}{a_1(\xi)}$$
+for $x\in\overline{I}$. Then
+$$y(x)=\int_{x_0}^xf(\xi)y_{\xi}(x)d\xi$$
+solves
+$$a_1(x)y'+a_0(x)y=f(x),\hspace{3mm}y(x_0)=0$$
+\end{block}
+\begin{block}{}
+(Choose $c(\xi)$ which leads to $y_{\xi}(\xi)=c(\xi)y_{hom}(\xi)=\dfrac{1}{a_1(\xi)}$.)
+\end{block}
+\end{frame}
+
+\begin{frame}
+\begin{block}{Example}
+$$\dfrac{dy}{dx}=3y+x$$
+\end{block}
+\end{frame}
+
+\begin{frame}
+\begin{block}{Solution}
+\begin{enumerate}
+\item $\dfrac{dy}{dx}-3y=0\Rightarrow y_{\text{hom}}=c\cdot e^{3x}$
+\item Set $y_{\text{part}}=c(x)e^{3x}$, then $c'(x)e^{3x}=x$. So
+\begin{align*}
+c(x)&=\int xe^{-3x}dx=-\dfrac{1}{3}\int xd(e^{-3x})\\
+&=-\dfrac{1}{3}\Big(xe^{-3x}-\int e^{-3x}dx\Big)\\
+&=-\dfrac{1}{3}xe^{-3x}-\dfrac{1}{9}e^{-3x}
+\end{align*}
+Finally, $y=c\cdot e^{3x}-\dfrac{1}{3}x-\dfrac{1}{9}$
+\end{enumerate}
+\end{block}
+\end{frame}
+
+\begin{frame}
+\frametitle{Transformable Equations}
+\begin{block}{$y'=f(ax+by+c);b\neq0$}
+$$u(x)=ax+by(x)+c$$
+\end{block}
+\begin{block}{$y'=f(y/x)$}
+$$u(x)=\dfrac{y(x)}{x}$$
+\end{block}
+\end{frame}
+
+\begin{frame}
+\begin{block}{$y'=f\Big(\dfrac{a_1x+b_1y+c_1}{a_2x+b_2y+c_2}\Big)$}
+$$u(x)=a_1x+b_1y(x)+c_1,v(x)=a_2x+b_2y(x)+c_2$$
+$$x=\dfrac{b_2(u-c_1)-b_1(v-c_2)}{a_1b_2-a_2b_1}$$
+$$\dfrac{du}{dv}=\dfrac{du}{dx}\cdot\dfrac{dx}{dv}=(a_1+b_1\dfrac{dy}{dx})\dfrac{b_2(du/dv)-b_1}{a_1b_2-a_2b_1}$$
+$$\dfrac{du}{dv}=(a_1+b_1f\Big(\dfrac{u}{v}\Big))\dfrac{b_2(du/dv)-b_1}{a_1b_2-a_2b_1}$$
+$$\dfrac{du}{dv}=b_2g\Big(\dfrac{u}{v}\Big)\dfrac{du}{dv}-b_1g\Big(\dfrac{u}{v}\Big)$$
+$$\dfrac{du}{dv}=h\Big(\dfrac{u}{v}\Big)$$
+\end{block}
+\end{frame}
+
+\begin{frame}
+\begin{block}{Example}
+$$y'=\dfrac{x-y}{x+y}$$
+\end{block}
+\end{frame}
+
+\begin{frame}
+\begin{block}{Solution}
+Set $u(x)=\dfrac{y(x)}{x}$, then $\dfrac{1-u}{1+u}=y'=u'x+u$. So
+$$\int \dfrac{1+u}{1-2u-u^2}du=\int \dfrac{1}{x}dx$$
+$$\ln(u+1+\sqrt{2})+\ln(u+1-\sqrt{2})=-2\ln x+C$$
+$$(y/x+(1+\sqrt{2}))(y/x+(1-\sqrt{2}))=\dfrac{C}{x^2}$$
+$$y^2+2xy-x^2=C$$
+$$y=-x\pm\sqrt{2x^2-C}$$
+\end{block}
+\end{frame}
+
+\begin{frame}
+\begin{block}{$y'+gy+hy^{\alpha}=0,\alpha\neq1$ (Bernoulli's equation)}
+$$u(x)=(y(x))^{1-\alpha}$$
+\begin{align*}
+y'+gy+hy^\alpha=0&\Rightarrow (1-\alpha)y^{-\alpha}y'+(1-\alpha)gy^{1-\alpha}+(1-\alpha)h=0\\
+&\Rightarrow (y^{1-\alpha})'+(1-\alpha)gy^{1-\alpha}+(1-\alpha)h=0\\
+&\Rightarrow u'+(1-\alpha)gu+(1-\alpha)h=0\\
+\end{align*}
+\end{block}
+
+\end{frame}
+
+\begin{frame}
+We assume $y(x)>0$ for all $x\in I$ and each strictly positive solution $u(x)$ can yield a strictly positive solution
+$$y_+(x)=(u(x))^{1/(1-\alpha)}$$
+\begin{block}{Note}
+\begin{enumerate}
+\item $\alpha>0$, $y=0$
+\item $\alpha\in\mathbb{Z}, \alpha\equiv1(\text{mod 2})$, $y_-=-y_+$
+\item $\alpha\in\mathbb{Z}, \alpha\equiv0(\text{mod 2})$, $y_-=-|u(x)|^{1/{(1-\alpha)}}$
+\end{enumerate}
+\end{block}
+\end{frame}
+
+\begin{frame}
+\begin{block}{$y'+gy+hy^2=k$ (Ricatti's equation)}
+\begin{enumerate}
+\item Guess or given a solution $\phi$
+\item For other solution $y$, set $u=y-\phi$, then
+\begin{align*}
+&\left\{
+\begin{aligned}
+y'+gy+hy^2=k\\
+\phi'+g\phi+h\phi^2=k\\
+\end{aligned}
+\right.\\\Rightarrow & (y'-\phi')+g(y-\phi)+h(y-\phi)(y+\phi)=0\\
+\Rightarrow&u'+gu+hu(u+2\phi)=0\\
+\Rightarrow&u'+(g+2\phi h)u+hu^2=0
+\end{align*}
+\end{enumerate}
+\end{block}
+\end{frame}
+
+\begin{frame}
+\begin{block}{Example}
+$$\dfrac{dy}{dx}=x^4y+x^4y^4, \hspace{9mm}y(0)=1$$
+\end{block}
+\end{frame}
+
+\begin{frame}
+\begin{block}{Solution}
+$y(x)=0$ is not a solution.
+$$y'-x^4y-x^4y^4=0\xLongrightarrow{\cdot (-3y^{-4})}(y^{-3})'+3x^4(y^{-3})+3x^4=0$$
+Set $u=y^{-3}$, then $y=u^{-1/3}$.
+$$u'+3x^4u=0\Rightarrow u_{\text{hom}}=c\cdot e^{-\frac{3}{5}x^5}$$
+Set $u_{\text{part}}=c(x)\cdot e^{-\frac{3}{5}x^5}$, then 
+$$c'(x)=-3x^4e^{\frac{3}{5}x^5}\Rightarrow c(x)=-e^{\frac{3}{5}x^5}$$
+So $u(x)=c\cdot e^{-\frac{3}{5}x^5}-1$. Since $y(0)=1$, 
+$$y=\dfrac{1}{\sqrt[3]{2e^{-3x^5/5}-1}}$$
+\end{block}
+\end{frame}
+
+\begin{frame}
+\frametitle{$h(x,y)y'+g(x,y)=0$}
+\begin{block}{Another view}
+$$h(x,y)y'+g(x,y)=0\Rightarrow\langle\begin{pmatrix}
+1\\
+y'
+\end{pmatrix},\begin{pmatrix}
+g(x,y)\\
+h(x,y)
+\end{pmatrix}\rangle=0$$
+$\begin{pmatrix}
+1\\
+y'
+\end{pmatrix}$: tangent vector of integral curve
+
+\end{block}
+\begin{block}{}
+Integral curve is perpendicular to the vector field
+$$F^{\perp}:\mathbb{R}^2\mapsto\mathbb{R}^2,\hspace{3mm}F^{\perp}(x,y)=\begin{pmatrix}
+g(x,y)\\
+h(x,y)
+\end{pmatrix} $$
+\end{block}
+\end{frame}
+
+\begin{frame}
+\begin{block}{Equipotential Line}
+Solution is $U(x,y)$=constant, where $U:\mathbb{R}^2\mapsto\mathbb{R}$ is a potential function of the conservation vector field
+
+\end{block}
+\begin{block}{What do we need to do?}
+Find a potential function $U(x,y)$ whose gradient at each point is parallel to the vector $\begin{pmatrix}
+g(x,y)\\h(x,y)
+\end{pmatrix}$ i.e.
+$$\nabla U(x,y)=M(x,y)\cdot F^{\perp}(x,y)$$
+\end{block}
+\end{frame}
+
+\begin{frame}
+\frametitle{Integrating factors (Euler Multipliers)}
+Let $g,h$ be continuous functions on an open set $D\subset\mathbb{R}^2$. A function $M$ with $M(x,y)\neq0$ defined on $D$ is said to be an integrating factor or Euler multiplier for the differential equation
+$$h(x,y)y'+g(x,y)=0$$
+if the vector field
+$$F^{\perp}(x,y)=\begin{pmatrix}
+M(x,y)g(x,y)\\
+M(x,y)h(x,y)
+\end{pmatrix}$$
+has a potential function.
+\end{frame}
+
+\begin{frame}
+\begin{block}{Requirement}
+If $D$ is open, simply connected and $g,h,M\in C^1(D)$,
+$$\dfrac{\partial M(x,y)g(x,y)}{\partial y}=\dfrac{\partial M(x,y)h(x,y)}{\partial x}\hspace{2mm}\text{(Rotation is zero)}$$
+i.e.
+$$\hspace{2mm}\dfrac{\partial M}{\partial y}g+M\dfrac{\partial g}{\partial y}=\dfrac{\partial M}{\partial x}h+M\dfrac{\partial h}{\partial x}$$
+
+\end{block}
+
+\begin{block}{Assumption}
+\begin{enumerate}
+\item $M$ depends only on $x$ or only on $y$
+\item $M$ depends only on $x\cdot y$
+\end{enumerate}
+\end{block}
+\end{frame}
+
+\begin{frame}
+\begin{block}{Example}
+$$y'=\dfrac{x-y}{x+y}$$
+\end{block}
+\end{frame}
+
+\begin{frame}
+\begin{block}{Solution}
+$$M_y(y-x)+M=M_x(y+x)+M\Rightarrow M=\text{constant}.$$
+\begin{align*}
+&\dfrac{\partial U}{\partial x}=y-x,\dfrac{\partial U}{\partial y}=y+x\\
+\Rightarrow &U=\int (y-x) dx=yx-\dfrac{1}{2}x^2+C(y),\dfrac{\partial U}{\partial y}=y+x\\
+\Rightarrow&x+\dfrac{\partial C(y)}{\partial y}=y+x\\
+\Rightarrow&C(y)=\dfrac{1}{2}y^2\\
+\Rightarrow&U(x,y)=\dfrac{1}{2}y^2+xy-\dfrac{1}{2}x^2\\
+\Rightarrow&y^2+2xy-x^2=C
+\end{align*}
+\end{block}
+\end{frame}
+
+
+\end{document}

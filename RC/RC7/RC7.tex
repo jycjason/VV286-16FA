@@ -1,0 +1,335 @@
+\documentclass{beamer}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{mathrsfs}
+\usepackage{extarrows}
+\usepackage{bbm} 
+\setbeamercolor{footcolor}{fg=blue!100} % 设置字体和背景颜色
+\setbeamertemplate{headline}{%
+  \leavevmode%
+  \hbox{%
+    \hskip228pt
+    \begin{beamercolorbox}[wd=.126\paperwidth,ht=2.25ex,dp=1ex,right]{footcolor}%      
+       \textcolor[rgb]{0,0.168,0.376}{Slide \insertframenumber{} }
+    \end{beamercolorbox}}%
+  \vskip-19pt%
+}
+
+\setbeamertemplate{frametitle}
+{
+\vspace{30pt}\textcolor[rgb]{0,0.168,0.376}{\insertframetitle}
+}
+
+ 
+\pgfdeclareimage[height=0.61cm]{university-logo}{logo.png}  
+\logo{\pgfuseimage{university-logo}{\vspace{244pt}}} 
+\title{\textcolor[rgb]{0,0.168,0.376}{VV286 RC7}}
+\author{JIANG Yicheng}
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+
+
+
+
+\begin{frame}
+\frametitle{Series Methods for Second-Order Equations}
+Set $x(t)=\sum\limits_{k=0}^{\infty}a_kt^k$, then
+$$x'(t)=\sum\limits_{k=1}^{\infty}ka_kt^{k-1}=\sum\limits_{k=0}^{\infty}(k+1)a_{k+1}t^{k}$$
+$$x''(t)=\sum\limits_{k=2}^{\infty}k(k-1)a_kt^{k-2}=\sum\limits_{k=0}^{\infty}(k+2)(k+1)a_{k+2}t^{k}$$
+Insert to find relation among coefficients $a_k,a_{k+1},a_{k+2}$. If we can find two independent solutions (usually no $t$ before $x''$, the easiest case), then we have done; else
+
+\end{frame}
+\begin{frame}
+Set $x(t)=t^r\sum\limits_{k=0}^{\infty}a_kt^k$, then
+$$x'(t)=\sum\limits_{k=0}^{\infty}(k+r)a_kt^{k+r-1}$$
+$$x''(t)=\sum\limits_{k=0}^{\infty}(k+r)(k+r-1)a_kt^{k+r-2}$$
+Insert to solve $r$.
+\end{frame}
+\begin{frame}
+\begin{enumerate}
+\item Two distinct real roots $r_1$ and $r_2$, $r_1-r_2\notin\mathbb{Z}$
+$$x_1(t)=t^{r_1}\sum\limits_{n=0}^{\infty}a_nt^n,\hspace{3mm}x_2(t)=t^{r_2}\sum\limits_{n=0}^{\infty}b_nt^n$$
+\item Two distinct real roots $r_1$ and $r_2$, $r_1-r_2\in\mathbb{Z}$
+\begin{align*}
+&x_2(t)\\
+=&\dfrac{d}{d r}\Big(t^r\sum\limits_{n=0}^{\infty}a_n(r)t^n\Big)\Bigg|_{r=r_2}=t^{r}\ln t\sum\limits_{n=0}^{\infty}a_n(r)t^n+t^{r}\sum\limits_{n=0}^{\infty}a'_n(r)t^n\Bigg|_{r=r_2}\\
+=&c\cdot x_1(t)\ln t+t^{r_2}\sum\limits_{n=0}^{\infty}a'_n(r_2)t^n
+\end{align*}
+Especially $c=1$ for $r_1=r_2$.
+\end{enumerate}
+\end{frame}
+\begin{frame}
+\begin{block}{3. Complex root}
+$$x_1(t)=\text{Re}\Big(t^{r_1}\sum\limits_{n=0}^{\infty}a_nt^n\Big),\hspace{3mm}x_2(t)=\text{Im}\Big(t^{r_2}\sum\limits_{n=0}^{\infty}b_nt^n\Big)$$
+
+\end{block}
+\end{frame}
+
+\begin{frame}
+\begin{block}{Singular Point}
+The equation
+$$x''+ p(t)x'+ q(t)x = 0$$
+is said to have a \textcolor[rgb]{0,0.6,0.3}{\textbf{\textit{regular singular point}}} at $t_0$ if the functions $(t - t_0)p(t)$ and $(t - t_0)^2q(t)$ are analytic in a neighborhood of $t_0$. A singular point which is not regular is said to be \textcolor[rgb]{0,0.6,0.3}{\textbf{\textit{irregular}}} .
+\end{block}
+\end{frame}
+
+\begin{frame}
+\frametitle{Bessel Equation}
+The Bessel equation of order $ \nu\geqslant0$
+$$x^2y''+xy'+(x^2-\nu^2)y=0$$
+
+\end{frame}
+
+\begin{frame}
+
+\footnotesize
+\begin{align*}
+0=&x^2\sum\limits_{k=0}^{\infty}(k+r)(k+r-1)a_kx^{k+r-2}
++x\sum\limits_{k=0}^{\infty}(k+r)a_kx^{k+r-1}+(x^2-\nu^2)x^r\sum\limits_{k=0}^{\infty}a_kx^k\\
+=&\sum\limits_{k=0}^{\infty}(k+r)(k+r-1)a_kx^{k+r}+\sum\limits_{k=0}^{\infty}(k+r)a_kx^{k+r}\\
+&+\sum\limits_{k=0}^{\infty}a_kx^{k+r+2}-\nu^2\sum\limits_{k=0}^{\infty}a_kx^{k+r}\\
+=&r(r-1)a_0x^r+(1+r)ra_1x^{1+r}+ra_0x^r+(1+r)a_1x^{1+r}-\nu^2a_0x^r-\nu^2a_1x^{1+r}\\
+&+\sum\limits_{k=0}^{\infty}((k+r+2)(k+r+1)a_{k+2}+(k+r+2)a_{k+2}+a_k-\nu^2a_{k+2})x^{x+r+2}
+\end{align*}
+
+\end{frame}
+
+\begin{frame}
+
+So
+$$
+\left\{
+\begin{aligned}
+&(r^2-\nu^2)a_0=0\\
+&((r+1)^2-\nu^2)a_1=0\\
+&((k+r+2)^2-\nu^2)a_{k+2}=-a_k,k\geqslant0\\
+\end{aligned}
+\right.$$
+Choose
+$$\left\{
+\begin{aligned}
+&r=\nu\vee r=-\nu\\
+&((k+r+2)^2-\nu^2)a_{k+2}=-a_k,k\geqslant0\\
+\end{aligned}
+\right.
+$$
+\end{frame}
+\begin{frame}
+For $r=\nu$, $a_1=0$
+\begin{align*}
+a_{2k+1}&=0,k\in\mathbb{N}\\
+a_{2k}=&-\dfrac{1}{(2k)(2k+2\nu)}a_{2k-2}=-\Big(\dfrac{1}{2}\Big)^2\dfrac{1}{k(k+\nu)}a_{2k-2}\\
+=&\Big(\dfrac{1}{2}\Big)^{2k}\dfrac{(-1)^k}{k!\prod\limits_{i=1}^k(i+\nu)}a_0,k\in\mathbb{N}^*
+\end{align*}
+Set $a_0=\dfrac{1}{2^{\nu}\Gamma(\nu+1)}$, then $a_{2k}=\Big(\dfrac{1}{2}\Big)^{2k}\dfrac{(-1)^k}{k!\prod\limits_{i=1}^k(i+\nu)}\dfrac{1}{2^{\nu}\Gamma(\nu+1)}=\Big(\dfrac{1}{2}\Big)^{2k+\nu}\dfrac{(-1)^k}{k!\Gamma(1+k+\nu)}$
+
+\end{frame}
+
+\begin{frame}
+So one solution (\textit{Bessel function of the first kind}) is
+\begin{align*}
+J_{\nu}(x)&=x^{r}\sum\limits_{k=0}^{\infty}a_{k}x^k=x^{\nu}\sum\limits_{n=0}^{\infty}\Big(\dfrac{1}{2}\Big)^{2n+\nu}\dfrac{(-1)^n}{n!\Gamma(1+n+\nu)}x^{2n}\\
+&=\sum\limits_{n=0}^{\infty}\dfrac{(-1)^n}{n!\Gamma(1+n+\nu)}\Big(\dfrac{x}{2}\Big)^{2n+\nu}
+\end{align*}
+
+
+\end{frame}
+
+
+\begin{frame}
+For $r=-\nu$, 
+
+\begin{block}{1. $2\nu\in2\mathbb{N}+1$}
+\begin{align*}
+\left\{
+\begin{aligned}
+&a_1=0\\
+&(k+2)(k+2-2\nu)a_{k+2}=-a_k,k\geqslant0\\
+\end{aligned}
+\right.
+\end{align*}
+So $a_{2\nu-2}=0\Rightarrow \forall k\in[0,2\nu-2]\cap2\mathbb{N}+1, a_k=0$ 
+
+And $a_{2\nu}$ is arbitrary.
+\end{block}
+
+\end{frame}
+
+
+\begin{frame}
+For $k\geqslant\nu+1/2$
+\begin{align*}
+&a_{2k+1}(-\nu)\\
+=&-\Big(\dfrac{1}{2}\Big)^2\dfrac{1}{(k+1/2)(k+1/2-\nu)}a_{2k-1}(-\nu)\\
+=&\Big(\dfrac{1}{2}\Big)^{2k+1-2\nu}\dfrac{(-1)^{k+1/2-\nu}}{\prod\limits_{i=\nu+1/2}^{k}(i+1/2)\prod\limits_{i=\nu+1/2}^k(i+1/2-\nu)}a_{2\nu}(-\nu)\\
+=&\Big(\dfrac{1}{2}\Big)^{2k+1-2\nu}\dfrac{(-1)^{k+1/2-\nu}}{\prod\limits_{i=1}^{k-\nu+1/2}(i+\nu)\cdot(k+1/2-\nu)!}a_{2\nu}(-\nu)
+\end{align*}
+Choose $a_{2\nu}(-\nu)=a_{0}(\nu)$, then $a_{2k+1}(-\nu)=a_{2k-2\nu+1}(\nu)$
+\end{frame}
+\begin{frame}
+So
+\begin{align*}
+&x^{-\nu}\sum\limits_{k=0}^{\infty}a_{2k+1}(-\nu)x^{2k+1}=x^{-\nu}\sum\limits_{k=\nu-1/2}^{\infty}a_{2k+1}(-\nu)x^{2k+1}\\
+=&x^{-\nu}\sum\limits_{k=0}^{\infty}a_{2k+2\nu}(-\nu)x^{2k+2\nu}=\sum\limits_{k=0}^{\infty}a_{2k}(\nu)x^{2k+\nu}\\
+=&y_1(x)
+\end{align*}
+is not independent of $y_1(x)$.
+
+\end{frame}
+
+\begin{frame}
+\begin{align*}
+a_{2k}(-\nu)&=\Big(\dfrac{1}{2}\Big)^{2k}\dfrac{(-1)^k}{k!\prod\limits_{i=1}^k(i+\nu)}a_0(-\nu)
+\end{align*}
+If $\nu\notin\mathbb{N}\wedge\lceil\nu\rceil=m$,  we can set $a_0(-\nu)=\dfrac{2^{\nu}}{\Gamma(-\nu)}=\dfrac{2^{\nu}\prod\limits_{i=1}^{m}(i-\nu)}{\Gamma(m-\nu)}$, then $$a_{2k}(-\nu)=\Big(\dfrac{1}{2}\Big)^{2k}\dfrac{(-1)^k}{k!\prod\limits_{i=1}^k(i-\nu)}\dfrac{2^{\nu}\prod\limits_{i=1}^{m}(i-\nu)}{\Gamma(m-\nu)}=\Big(\dfrac{1}{2}\Big)^{2k-\nu}\dfrac{(-1)^k}{k!\Gamma(1+k-\nu)}$$
+which is also hold for $k=0$.
+\end{frame}
+\begin{frame}
+So
+$$J_{-\nu}(x)=\sum\limits_{n=0}^{\infty}\dfrac{(-1)^n}{n!\Gamma(1+n-\nu)}\Big(\dfrac{x}{2}\Big)^{2n-\nu}$$
+is an independent solution of $y_1(x)=J_{\nu}(x)$.
+\end{frame}
+
+
+\begin{frame}
+\begin{block}{3. $\nu\in\mathbb{N}$}
+\begin{align*}
+\left\{
+\begin{aligned}
+&a_1=0\\
+&(k+2)(k+2-2\nu)a_{k+2}=-a_k,k\geqslant0\\
+\end{aligned}
+\right.
+\end{align*}
+And therefore
+\begin{align*}
+a_{2k+1}(-\nu)&=0,k\in\mathbb{N};a_{2k}(-\nu)=0,k\leqslant\nu-1\\
+a_{2k}(-\nu)&=-\dfrac{1}{(2k)(2k-2\nu)}a_{2k-2}(-\nu)\\
+&=\Big(\dfrac{1}{2}\Big)^{2k-2\nu}\dfrac{(-1)^{k-\nu}}{\prod\limits_{i=\nu+1}^{k}i\cdot\prod\limits_{i=\nu+1}^k(i-\nu)}a_{2\nu}(-\nu)
+\end{align*}
+
+\end{block}
+\end{frame}
+
+\begin{frame}
+\begin{block}{}
+Choose $a_{2\nu}(-\nu)=a_0(\nu)$, then
+$$a_{2k}(-\nu)=\Big(\dfrac{1}{2}\Big)^{2k-2\nu}\dfrac{(-1)^{k-\nu}}{\prod\limits_{i=1}^{k-\nu}(i+\nu)\cdot(k-\nu)!}a_{0}(\nu)=a_{2k-2\nu}(\nu)$$
+\begin{align*}
+y_2(x)&=x^{-\nu}\sum\limits_{k=0}^{\infty}a_k(-\nu)x^k=x^{-\nu}\sum\limits_{k=\nu}^{\infty}a_{2k}(-\nu)x^{2k}\\
+&=x^{-\nu}\sum\limits_{k=0}^{\infty}a_{2k+2\nu}(-\nu)x^{2k+2\nu}=\sum\limits_{k=0}^{\infty}a_{2k}(\nu)x^{2k+\nu}\\
+&=y_1(x)
+\end{align*}
+Fail to find an independent solution!
+\end{block}
+\end{frame}
+
+\begin{frame}
+\begin{block}{Reduction of Order}
+Set $y_2(x)=c(x)\cdot J_{\nu}(x)$, then
+\begin{align*}
+&x^2y_2''+xy_2'+(x^2-\nu^2)y_2=0\\
+\Rightarrow&x^2\big(c''(x) J_{\nu}(x)+2c'(x)J'_{\nu}(x)+c(x)J''_{\nu}(x)\big)\\&+x\big(c'(x)J_{\nu}(x)+c(x)J_{\nu}(x)\big)
++(x^2-\nu^2)c(x)\cdot J_{\nu}(x)=0\\
+\Rightarrow &x^2 J_{\nu}(x)c''(x)+(2x^2J'_{\nu}(x)+xJ_{\nu}(x))c'(x)=0\\
+\Rightarrow&\ln |c'(x)|=(-2\ln|J_{\nu}(x)|-\ln |x|)\\
+\Rightarrow&c'(x)=\dfrac{1}{x\cdot J_{\nu}^2(x)}\\
+\Rightarrow&c(x)=\int \dfrac{dx}{x\cdot J_{\nu}^2(x)}
+\end{align*}
+
+\end{block}
+\end{frame}
+
+\begin{frame}
+\begin{align*}
+&((k+r+2)^2-\nu^2)a_{k+2}=-a_k \,\,\,\,(k\in2\mathbb{N}+1)\\
+\Rightarrow&a_{k}=-\dfrac{1}{(k+r-\nu)(k+r+\nu)}a_{k-2}=\dfrac{(-1)^{k/2}}{\prod\limits_{i=1}^{k/2}(2i+r-\nu)(2i+r+\nu)}a_0\\
+\Rightarrow&\dfrac{a'_k(r)}{a_{k}(r)}=\dfrac{d\ln |a_{k}(r)|}{d r}\\
+&=\dfrac{d }{d r}(\ln |a_0(r)|-\sum\limits_{i=1}^{k/2}\ln|2i+r+\nu|-\sum\limits_{i=1}^{k/2}\ln|2i+r-\nu|)\\
+&=\dfrac{a'_0(r)}{a_0(r)}-\sum\limits_{i=1}^{k/2}\dfrac{1}{2i+r+\nu}-\sum\limits_{i=1}^{k/2}\dfrac{1}{2i+r-\nu}\\
+\Rightarrow& a_k'(-\nu)=(\dfrac{a'_0(-\nu)}{a_0(-\nu)}-\sum\limits_{i=1}^{k/2}\dfrac{1}{2i}-\sum\limits_{i=1}^{k/2}\dfrac{1}{2i-2\nu})\dfrac{(-1)^{k/2}}{\prod\limits_{i=1}^{k/2}2i(2i-2\nu)}a_0(-\nu)
+\end{align*}
+
+\end{frame}
+\begin{frame}
+\begin{align*}
+&c\cdot y_1(x)\ln x+x^{-\nu}\sum\limits_{k=0}^{\infty}a'_k(-\nu)x^k\\
+=&c\cdot J_{\nu}(x)\ln x-a_0'(-\nu)J_{-\nu}(x)\\
+&-\sum\limits_{k=0}^{\infty}a_0(-\nu)\dfrac{(-1)^{k/2}(\sum\limits_{i=1}^{k/2}\dfrac{1}{2i}+\sum\limits_{i=1}^{k/2}\dfrac{1}{2i-2\nu})}{\prod\limits_{i=1}^{k/2}2i(2i-2\nu)}\Big(\dfrac{x}{2}\Big)^{2k-\nu}
+\end{align*}
+\begin{block}{Bessel function of the second kind}
+$$Y_{\nu}(x)=\dfrac{J_{\nu}(x)\cos(\nu \pi)-J_{-\nu}(x)}{\sin(\nu \pi)}$$
+\end{block}
+
+\end{frame}
+
+\begin{frame}
+As $\nu\rightarrow0$, $J_{\nu}(x)\cos(\nu \pi)-J_{-\nu}(x)\rightarrow0,\sin(\nu \pi)\rightarrow0$, so we can use l'Hospital's rule,
+\begin{align*}
+Y_n(x)=&\underset{\nu\rightarrow n}{\lim}\dfrac{J_{\nu}(x)\cos(\nu \pi)-J_{-\nu}(x)}{\sin(\nu \pi)}\\
+=&\underset{\nu\rightarrow n}{\lim}\dfrac{J_{\nu}(x)(-\pi\sin(\nu \pi))+\frac{dJ_{\nu}(x)}{d\nu}\cos(\nu\pi)-\frac{dJ_{-\nu}(x)}{d\nu}}{\pi\cos(\nu \pi)}\\
+=&\underset{\nu\rightarrow n}{\lim}\dfrac{J_{\nu}(x)(-\pi\sin(\nu \pi))+\frac{dJ_{t}(x)}{dt}|_{t=\nu}\cos(\nu\pi)+\frac{dJ_{t}(x)}{dt}|_{t=-\nu}}{\pi\cos(\nu \pi)}\\
+=&\dfrac{1}{\pi}(\frac{dJ_{t}(x)}{dt}|_{t=n}+(-1)^n\frac{dJ_{t}(x)}{dt}|_{t=-n})\\
+=&\dfrac{2}{\pi}\frac{dJ_{\nu}(x)}{d\nu}|_{\nu=0}
+\end{align*}
+So $Y_0(x)=\dfrac{2}{\pi}\dfrac{dJ_{\nu}(x)}{d\nu}|_{\nu=0}$.
+\end{frame}
+
+
+\begin{frame}
+\begin{align*}
+&\dfrac{dJ_{\nu}(x)}{d\nu}\Big|_{\nu=n}=\dfrac{d}{d\nu}\sum\limits_{k=0}^{\infty}\dfrac{(-1)^k}{k!\Gamma(k+\nu+1)}\Big(\dfrac{x}{2}\Big)^{2k+\nu}\Big|_{\nu=n}\\
+=&\sum\limits_{k=0}^{\infty}\dfrac{(-1)^k(-\Gamma'(k+\nu+1))}{k!(\Gamma(k+\nu+1))^2}\Big(\dfrac{x}{2}\Big)^{2k+\nu}\Big|_{\nu=n}\\
+&+\sum\limits_{k=0}^{\infty}\dfrac{(-1)^k}{k!\Gamma(k+\nu+1)}\Big(\dfrac{x}{2}\Big)^{2k+\nu}\ln(\dfrac{x}{2})\Big|_{\nu=n}\\
+=&-\sum\limits_{k=0}^{\infty}\dfrac{(-1)^k(\psi(k+\nu+1))}{k!\Gamma(k+\nu+1)}\Big(\dfrac{x}{2}\Big)^{2k+\nu}\Big|_{\nu=n}+J_n(x)\ln(\dfrac{x}{2})\\
+=&-\sum\limits_{k=0}^{\infty}\dfrac{(-1)^k(\psi(k+n+1))}{k!\Gamma(k+n+1)}\Big(\dfrac{x}{2}\Big)^{2k+n}+J_n(x)\ln(\dfrac{x}{2})\\
+=&-\sum\limits_{k=0}^{\infty}\dfrac{(-1)^k(-\gamma+\sum\limits_{m=1}^{n+k}\dfrac{1}{m})}{k!\Gamma(k+n+1)}\Big(\dfrac{x}{2}\Big)^{2k+n}+J_n(x)\ln(\dfrac{x}{2})
+\end{align*}
+
+\end{frame}
+
+\begin{frame}
+\begin{align*}
+=&-\sum\limits_{k=0}^{\infty}\dfrac{(-1)^k\sum\limits_{m=1}^{n+k}\dfrac{1}{m}}{k!(k+n)!}\Big(\dfrac{x}{2}\Big)^{2k+n}+J_n(x)\ln(\dfrac{x}{2})+\gamma J_n(x)\\
+=&J_n(x)\Big(\ln\Big(\dfrac{x}{2}\Big)+\gamma\Big)-\sum\limits_{k=0}^{\infty}\dfrac{(-1)^k\sum\limits_{m=1}^{n+k}\dfrac{1}{m}}{k!(k+n)!}\Big(\dfrac{x}{2}\Big)^{2k+n}
+\end{align*}
+Similarily,
+\begin{align*}
+\dfrac{dJ_{\nu}(x)}{d\nu}\Big|_{\nu=-n}=&J_{-n}(x)\Big(\ln\Big(\dfrac{x}{2}\Big)+\gamma\Big)-\sum\limits_{k=0}^{\infty}\dfrac{(-1)^k\sum\limits_{m=1}^{k}\dfrac{1}{m}}{k!(k+n)!}\Big(\dfrac{x}{2}\Big)^{2k+n}\\
+&-(-1)^n\sum\limits_{k=0}^{n-1}\dfrac{(n-k-1)!}{k!}\Big(\dfrac{x}{x}\Big)^{2k-n}
+\end{align*}
+\end{frame}
+
+\begin{frame}
+\begin{align*}
+Y_{n}(x)=&\dfrac{2}{\pi}J_n(x)\Big(\ln\Big(\dfrac{x}{2}\Big)+\gamma\Big)-\dfrac{1}{\pi}\sum\limits_{k=0}^{n-1}\dfrac{(n-k-1)!}{k!}\Big(\dfrac{x}{x}\Big)^{2k-n}\\
+&-\dfrac{1}{\pi}\sum\limits_{k=0}^{\infty}\dfrac{(-1)^k\Big(\sum\limits_{m=1}^{n+k}\dfrac{1}{m}+\sum\limits_{m=1}^{k}\dfrac{1}{m}\Big)}{k!(k+n)!}\Big(\dfrac{x}{2}\Big)^{2k+n}
+\end{align*}
+\end{frame}
+
+\begin{frame}
+\begin{block}{Solution to Bessel Equation}
+The Bessel equation of order $ \nu\geqslant0$
+$$x^2y''+xy'+(x^2-\nu^2)y=0$$
+\begin{enumerate}
+\item $\nu\notin\mathbb{N}$
+$$y(x)=c_1J_{\nu}(x)+c_2J_{-\nu}(x)$$
+\item $\nu\in\mathbb{N}$
+$$y(x)=c_1J_{\nu}(x)+c_2Y_{\nu}(x)$$
+\end{enumerate}
+\end{block}
+\end{frame}
+
+\begin{frame}
+\begin{block}{$\nu=\dfrac{2n+1}{2}$, $n\in\mathbb{N}$}
+$$J_{1/2}=\sqrt{\dfrac{2}{\pi x}}\sin x,J_{-1/2}=\sqrt{\dfrac{2}{\pi x}}\cos x$$
+$$\dfrac{d}{dx}(x^{-\nu}J_{\nu}(x))= -x^{-\nu}J_{\nu+1}(x)$$
+$$\dfrac{d}{dx}(x^{\nu}J_{\nu}(x))= x^{\nu}J_{\nu-1}(x)$$
+\end{block}
+\end{frame}
+\end{document}

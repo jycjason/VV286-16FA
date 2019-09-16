@@ -1,0 +1,327 @@
+\documentclass{beamer}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{mathrsfs}
+\usepackage{extarrows}
+\usepackage{bbm} 
+\usepackage{ulem}
+\setbeamercolor{footcolor}{fg=blue!100} % 设置字体和背景颜色
+\setbeamertemplate{headline}{%
+  \leavevmode%
+  \hbox{%
+    \hskip228pt
+    \begin{beamercolorbox}[wd=.126\paperwidth,ht=2.25ex,dp=1ex,right]{footcolor}%      
+       \textcolor[rgb]{0,0.168,0.376}{Slide \insertframenumber{} }
+    \end{beamercolorbox}}%
+  \vskip-19pt%
+}
+
+\setbeamertemplate{frametitle}
+{
+\vspace{30pt}\textcolor[rgb]{0,0.168,0.376}{\insertframetitle}
+}
+
+ 
+\pgfdeclareimage[height=0.61cm]{university-logo}{logo.png}  
+\logo{\pgfuseimage{university-logo}{\vspace{244pt}}} 
+\title{\textcolor[rgb]{0,0.168,0.376}{VV286 RC8}}
+\author{JIANG Yicheng}
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}
+\frametitle{Fourier Series}
+The space $L^2([a,b])$ is defined as the completion of $C([a, b])$ with respect to the norm $||\cdot||_2$
+$$||f||_2=\sqrt{\int_a^b|f(x)|^2dx}$$
+$$L^2([a,b]):=\Big\lbrace f:[a,b]\rightarrow\mathbb{C}:\int_a^b|f(x)|^2dx<\infty\Big\rbrace$$
+with inner product
+$$\langle f,g\rangle:=\int_a^b\overline{f(x)}g(x)dx\hspace{6mm}f,g\in L^2([a,b])$$
+
+\end{frame}
+
+\begin{frame}
+The orthonormal system basis in $L^2([-1,1])$
+$$\mathcal{B}_{[-1,1]}=\Big\lbrace \dfrac{1}{\sqrt{2}},\cos(\pi nx),\sin(\pi nx)\Big\rbrace_{n=1}^{\infty}$$
+The orthonormal system basis in $L^2([a,b])$
+$$\mathcal{B}_{[a,b]}=\Big\lbrace \tilde{e_n}(x):\tilde{e_n}(x)=\sqrt{\dfrac{2}{b-a}}\cdot e_n\Big(\dfrac{2}{b-a}\Big(x-\dfrac{b+a}{2}\Big)\Big)\Big\rbrace_{n=1}^{\infty}$$
+where $e_n(x)\in\mathcal{B}_{[-1,1]}$
+\end{frame}
+
+\begin{frame}
+\begin{block}{The basis in $L^2([0,L])$}
+\begin{enumerate}
+\item The Fourier-Euler Basis:
+$$\mathcal{B}_1=\Big\lbrace \dfrac{1}{\sqrt{L}},\sqrt{\dfrac{2}{L}}\cos\Big(\dfrac{2\pi nx}{L}\Big),\sqrt{\dfrac{2}{L}}\sin\Big(\dfrac{2\pi nx}{L}\Big)\Big\rbrace_{n=1}^{\infty}$$
+\item The Fourier-Cosine Basis:
+$$\mathcal{B}_2=\Big\lbrace \dfrac{1}{\sqrt{L}},\sqrt{\dfrac{2}{L}}\cos\Big(\dfrac{\pi nx}{L}\Big)\Big\rbrace_{n=1}^{\infty}$$
+\item The Fourier-Sine Basis:
+$$\mathcal{B}_3=\Big\lbrace \sqrt{\dfrac{2}{L}}\sin\Big(\dfrac{\pi nx}{L}\Big)\Big\rbrace_{n=1}^{\infty}$$
+\end{enumerate}
+\end{block}
+\end{frame}
+
+\begin{frame}
+
+\begin{block}{The basis in $L^2([-\pi,\pi])$}
+The Fourier-Euler Basis:
+$$\mathcal{B}_1=\Big\lbrace \dfrac{1}{\sqrt{2\pi}},\dfrac{1}{\sqrt{\pi}}\cos(nx),\dfrac{1}{\sqrt{\pi}}\sin(nx)\Big\rbrace_{n=1}^{\infty}$$
+
+\begin{block}{Complex Fourier-Euler Basis}
+Complex Fourier-Euler basis in $L^2([-\pi,\pi])$
+$$\mathcal{B}=\Big\lbrace \dfrac{1}{\sqrt{2\pi}}e^{inx}\Big\rbrace_{n=-\infty}^{\infty}$$
+\end{block}
+Complex Fourier-Euler basis in $L^2([-L,L])$
+$$\mathcal{B}=\Big\lbrace \dfrac{1}{\sqrt{2L}}e^{inx\pi/L}\Big\rbrace_{n=-\infty}^{\infty}$$
+\end{block}
+\end{frame}
+\begin{frame}
+\begin{block}{The Fourier Expansion}
+For a function $f\in L^2([a,b])$, 
+\begin{align*}
+\lim\limits_{N\rightarrow\infty}S_N(x)&=\sum\limits_{e_n\in\mathcal{B}_{[a,b]}}\langle e_n(x),f(x) \rangle e_n(x)\\
+&=\sum\limits_{e_n\in\mathcal{B}_{[a,b]}}\int_{a}^{b} f(x)\overline{e_n(x)} dx\cdot e_n(x)
+\end{align*}
+\end{block}
+\end{frame}
+\begin{frame}
+\begin{block}{Complex Fourier series for periodic function}
+$$f(x)=\sum\limits_{k=-\infty}^{\infty}a_ke^{jk\frac{2\pi}{T}x}$$
+$$a_k=\dfrac{1}{T}\int_{0}^{T}f(x)e^{-jk\frac{2\pi}{T}x}dx$$
+\end{block}
+\end{frame}
+
+
+
+
+\begin{frame}
+\begin{block}{Dirichlet's rule}
+Let $f \in L^2([a, b])$ be piecewise continuously differentiable. Then
+\begin{enumerate}
+\item On any subinterval $[a', b'] \subset [a, b]$ with $a' > a, b' < b$ on which $f$ is continuous the Fourier series converges uniformly towards $f$ .
+\item At any point $x \in [a, b]$, we have the pointwise limit
+$$S_N(x)\xrightarrow{N\rightarrow\infty}\dfrac{\lim\limits_{y\nearrow x}f(y)+\lim\limits_{y\searrow x}f(y)}{2}$$
+\end{enumerate}
+\end{block}
+\end{frame}
+
+
+
+
+\begin{frame}
+\begin{block}{Using Fourier series to evaluate series}
+
+\end{block}
+\begin{block}{Example}
+Let $f:\mathbb{R}\rightarrow\mathbb{R}$ satisfy $f(x+2\pi)=f(x)$ and
+$$f(x)=e^x\hspace{6mm}\text{for }-\pi<x<\pi$$
+Find the Fourier series of $f$ and use it to evaluate
+$$\sum\limits_{n=1}^{\infty}\dfrac{1}{1+n^2}$$
+\end{block}
+\end{frame}
+\begin{frame}
+\begin{block}{Solution}
+\begin{align*}
+&\int_{-\pi}^{\pi}f(x)\cdot\dfrac{1}{\sqrt{2\pi}}e^{-inx}\,\,\, dx=\int_{-\pi}^{\pi}e^x\cdot\dfrac{1}{\sqrt{2\pi}}e^{-inx}\,\,\, dx\\
+=&\dfrac{1}{\sqrt{2\pi}}\dfrac{1}{1-ni}e^xe^{-inx}\Big|_{-\pi}^{\pi}\\
+=&\dfrac{1}{\sqrt{2\pi}}\dfrac{(-1)^n}{1-ni}(e^{\pi}-e^{-\pi})
+\end{align*}
+Let $x=\pi$, then
+\begin{align*}
+&\sum\limits_{n=-\infty}^{\infty}\dfrac{1}{\sqrt{2\pi}}\dfrac{(-1)^n}{1-ni}(e^{\pi}-e^{-\pi})\cdot \dfrac{1}{\sqrt{2\pi}}e^{inx}\Big|_{x=\pi}\\
+=&\dfrac{e^{\pi}-e^{-\pi}}{2\pi}\sum\limits_{n=-\infty}^{\infty}\dfrac{1}{1-ni}=\dfrac{e^{\pi}-e^{-\pi}}{2\pi}\Big(1+2\sum\limits_{n=1}^{\infty}\dfrac{1}{1+n^2}\Big)
+\end{align*}
+\end{block}
+\end{frame}
+\begin{frame}
+\begin{block}{}
+According to Dirichlet's rule,
+\begin{align*}
+\dfrac{e^{\pi}-e^{-\pi}}{2\pi}\Big(1+2\sum\limits_{n=1}^{\infty}\dfrac{1}{1+n^2}\Big)&=\dfrac{\lim\limits_{y\nearrow \pi}f(y)+\lim\limits_{y\searrow \pi}f(y)}{2}\\
+&=\dfrac{e^{\pi}+e^{-\pi}}{2}
+\end{align*}
+So
+\begin{align*}
+\sum\limits_{n=1}^{\infty}\dfrac{1}{1+n^2}=\dfrac{1}{2}\Big(\dfrac{\pi(e^{\pi}+e^{-\pi})}{e^{\pi}-e^{-\pi}}-1\Big)
+\end{align*}
+\end{block}
+\end{frame}
+
+\begin{frame}
+\frametitle{Partial Differential Equation}
+\begin{enumerate}
+\item Use separation of variables
+$$u(x_1,\cdots, x_n) = u_1(x_1) \cdot u_2(x_2) \cdots u_n(x_n)$$
+\item Change the boundary condition
+\item Solve one equation $L u=\lambda u$ with initial consition and boundary condition (find eigenvalues together with eigenfunction)
+\item Solve other equations
+\item Let the whole solution satisfy boundary condition 
+\begin{enumerate}
+\item Usually expand boundary conditions to Fourier series and determine the coefficients
+\end{enumerate}
+\end{enumerate}
+
+\end{frame}
+\begin{frame}
+\begin{block}{Example}
+Find the general solution of the Laplace equation $\triangle u = 0$ on the rectangle $\Omega = [0,a] \times [0,b]$ with boundary conditions
+$$u(0, y) = 0, u(a,y) = 0, 0 < y < b$$
+$$\dfrac{\partial u}{\partial y}(x,0) = 0, u(x, b) = g(x), 0 < x < a$$
+where $g : [0, a] \rightarrow \mathbb{R}$ is a continuous function. Then find the solution if
+$$g(x) =\left\{
+\begin{aligned}
+&x,0<x<a/2\\
+&a-x,a/2<x<a\\
+\end{aligned}
+\right.
+$$
+\end{block}
+\end{frame}
+\begin{frame}
+\begin{block}{Solution}
+We make a separation-of-variables ansatz $u(x, y) = X(x)Y (y)$, yielding
+$$\dfrac{\partial^2 u}{\partial x^2}+\dfrac{\partial^2 u}{\partial y^2}=0\Rightarrow X''Y+XY''=0$$
+and hence
+$$\dfrac{X''}{X}=-\dfrac{Y''}{Y}=\lambda$$
+So
+$$X''=\lambda X, Y''=-\lambda Y $$
+with initial conditions and boundary conditions
+$$X(0)Y(y)=0,X(a)Y(y)=0, 0<y<b$$
+$$X(x)Y'(0)=0,X(x)Y(b)=g(x),0<x<a$$
+\end{block}
+\end{frame}
+\begin{frame}
+To find non-trival solution, the condition can be changed to
+$$X(0)=X(a)=Y'(0)=0,X(x)Y(b)=g(x),0<x<a$$
+For $X''=\lambda X$, we use ansatz $X(x)=e^{\rho(\lambda)x}$, and therefore
+$$\rho(\lambda)^2=\lambda$$
+\begin{block}{1. $\lambda=0$}
+$X(x)=c_0+c_1x$ to satisfy the initial conditions and boundary conditions, $X(x)=0$
+\end{block}
+\end{frame}
+\begin{frame}
+\begin{block}{2. $\lambda>0$}
+\begin{align*}
+\rho(\lambda)=\pm\sqrt{\lambda}\Rightarrow X(x)=c_1e^{\sqrt{\lambda}x}+c_2e^{-\sqrt{\lambda}x}
+\end{align*}
+Since $X(0)=X(a)=0$, 
+$$c_1+c_2=0,c_1e^{\sqrt{\lambda}a}+c_2e^{-\sqrt{\lambda}a}=0\Rightarrow c_1=c_2=0$$
+\end{block}
+
+\end{frame}
+\begin{frame}
+\begin{block}{3. $\lambda<0$}
+\begin{align*}
+\rho(\lambda)=\pm\sqrt{-\lambda}i\Rightarrow X(x)&=c_1e^{i\sqrt{-\lambda}x}+c_2e^{-i\sqrt{-\lambda}x}\\
+&=c_1\sin(\sqrt{-\lambda}x)+c_2\cos(\sqrt{-\lambda}x)
+\end{align*}
+Since $X(0)=X(a)=0$, 
+$$c_2=0,c_1\sin(\sqrt{-\lambda}a)+c_2\cos(\sqrt{-\lambda}a)=0\Rightarrow \sqrt{-\lambda}=\dfrac{n\pi}{a}$$
+So 
+$$X_n(x)=c_n\sin(\dfrac{n\pi x}{a}),Y''=\dfrac{n^2\pi^2}{a^2}Y$$
+Then
+$$Y_n(y)=d_ne^{n\pi y/a}+f_ne^{-n\pi y/a}$$
+\end{block}
+\end{frame}
+\begin{frame}
+Considering $Y'(0)=0$
+$$d_n\cdot n\pi/a-f_n\cdot n\pi/a=0\Rightarrow d_n=f_n$$
+So
+$$u(x,y)=\sum\limits_{n=1}^{\infty}X_nY_n=\sum\limits_{n=1}^{\infty}c_nd_n(e^{n\pi y/a}+e^{-n\pi y/a})\sin(\dfrac{n\pi x}{a})$$
+Expand $g(x)$ into Fourier sine series
+\begin{align*}
+&\int_0^ag(x)\sin (n\pi x/a)dx\\
+=&\int_0^{a/2}x\sin(n\pi x/a)dx+\int_{a/2}^a(a-x)\sin(n\pi x/a)dx\\
+=&\dfrac{2a^2}{n^2\pi^2}\sin(n\pi/2)
+\end{align*}
+\end{frame}
+\begin{frame}
+So 
+$$g(x)=\sum\limits_{n=1}^{\infty}\dfrac{2}{a}\Bigg(\dfrac{2a^2}{n^2\pi^2}\sin(n\pi/2)\Bigg)\sin(\dfrac{n\pi x}{a})$$
+Since $u(x,b)=g(x)$
+\begin{align*}
+&c_nd_n(e^{n\pi b/a}+e^{-n\pi b/a})=\dfrac{4a}{n^2\pi^2}\sin(n\pi/2)
+\end{align*}
+So $$u(x,y)=\sum\limits_{n=1}^{\infty}\dfrac{4a\sin(n\pi/2)}{e^{n\pi b/a}+e^{-n\pi b/a}}(e^{n\pi y/a}+e^{-n\pi y/a})\sin(\dfrac{n\pi x}{a})$$
+\end{frame}
+
+\begin{frame}
+\frametitle{Summary}
+\begin{itemize}
+\item Use ansatz to find power series solution of non-constant coefficient 2nd-order ODE 
+\begin{enumerate}
+\item Normal one: $x(t)=\sum\limits_{n=0}^{\infty}a_nt^n$
+\item Frobenius: $x(t)=t^r\sum\limits_{n=0}^{\infty}a_nt^n$
+\begin{enumerate}
+\item $r_1,r_2\in\mathbb{R}$, $r_1-r_2\notin\mathbb{N}$
+\item $r_1,r_2\in\mathbb{R}$, $r_1-r_2\in\mathbb{N}$: 
+
+1)try; 
+
+2)$\dfrac{dx_1(t)}{dr}\Big|_{r=r_2}\Rightarrow a'_n(r)$
+
+\item $r_1,r_2\in\mathbb{C}$
+\end{enumerate}
+\end{enumerate}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\begin{itemize}
+\item Change equation to Bessel Equation and find solution
+\begin{enumerate}
+\item Given \sout{(or find)} substitution (see \textit{bessel.pdf})
+$$z=g(x)\xlongequal{\text{usually}}\beta x^{\gamma}, u(g(x))=v(x,y(x))\xlongequal{\text{usually}}x^{\alpha}y(x)$$
+\item If no information of order, calaulate
+\begin{align*}
+y'(x)&=-\alpha x^{-\alpha-1}u(g(x))+x^{-\alpha}\dfrac{du(z)}{dz}\Bigg|_{z=g(x)}\dfrac{d(g(x))}{dx}\\
+&=-\alpha x^{-1}y(x)+x^{-\alpha}u'(z)|_{z=g(x)}g'(x)
+\end{align*}
+$$y''(x)=\dfrac{d}{dx}(-\alpha x^{-1}y(x)+x^{-\alpha}u'(z)|_{z=g(x)}g'(x))$$
+\item Insert and find solution of corresponding Bessel equation $J_{\nu}(z),J_{-\nu}(z)$, then the soltuion is $$y(x)=c_1x^{-\alpha}J_{\nu}(g(x))+c_2x^{-\alpha}J_{-\nu}(g(x))$$
+\end{enumerate}
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\begin{itemize}
+\item Evaluate series using Fouries series
+\begin{enumerate}
+\item According to domain of given function, use proper basis for Fourier series
+\begin{enumerate}
+\item $[0,L]$: $\mathcal{B}=\Big\lbrace \dfrac{1}{\sqrt{L}},\sqrt{\dfrac{2}{L}}\cos\Big(\dfrac{2\pi nx}{L}\Big),\sqrt{\dfrac{2}{L}}\sin\Big(\dfrac{2\pi nx}{L}\Big)\Big\rbrace_{n=1}^{\infty}$
+\item $[-\pi,\pi]$: $\mathcal{B}=\Big\lbrace \dfrac{1}{\sqrt{2\pi}},\dfrac{1}{\sqrt{\pi}}\cos(nx),\dfrac{1}{\sqrt{\pi}}\sin(nx)\Big\rbrace_{n=1}^{\infty}$
+\item $[-L,L]$: $\mathcal{B}=\Big\lbrace \dfrac{1}{\sqrt{2L}}e^{inx\pi/L}\Big\rbrace_{n=-\infty}^{\infty}$
+\end{enumerate}
+\item Calculate the coefficients (Pay attention to constant!)
+\item Choose appropriate value for $x$ and use \underline{\textbf{\textit{\emph{Dirichlet's rule}}}} 
+\end{enumerate}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\begin{itemize}
+\item Solve PDE (usually only two variables)
+
+\begin{enumerate}
+\item Use separation of variables
+$$u(x_1,\cdots, x_m) = u_1(x_1) \cdot u_2(x_2) \cdots u_m(x_m)$$
+
+\item Change the boundary condition
+\item  According to boundary condition, choose one equation $L u_1=\lambda u_1$ to solve. (find proper $\lambda$)
+\item Solve other equations for each $\lambda$
+$$(u_i)_n(x_i)=(c_i)_n\cdot f(\rho(\lambda)_nx_i)$$
+\item Let the whole solution satisfy boundary condition 
+$$u(x_1,\cdots,x_m)=\sum\limits_{n=1}^{\infty}\Big(\prod\limits_{i=1}^m(u_i)_n(x_i)\Big)$$
+\begin{enumerate}
+\item Usually expand boundary conditions to Fourier series and determine the coefficients
+\end{enumerate}
+\end{enumerate}
+\end{itemize}
+\end{frame}
+
+\end{document}

@@ -1,0 +1,79 @@
+\documentclass[a4paper,12pt,titlepage]{report}
+\usepackage{amsmath} 
+\usepackage{amssymb}
+\usepackage[nottoc]{tocbibind}
+\usepackage{float}
+\usepackage{indentfirst}
+\usepackage{extarrows}
+\usepackage{mathrsfs}
+\usepackage{dsfont}
+\usepackage[top=1in, bottom=1 in, left= 1in, right=1 in]{geometry}
+\usepackage{multirow}
+\usepackage{gauss}
+\usepackage{geometry}
+\usepackage{graphicx}
+\begin{document}
+\begin{center}\Huge
+\textbf{Convert to Bessel Equation}
+\end{center}
+\vspace{1cm}
+Given
+$$a_1x^{b_1}y''+a_2x^{b_2}y'+a_3x^{b_3}y=0$$
+use substitution
+$$z=g(x)=\beta x^{\gamma},u(g(x))=x^{\alpha}y(x)$$
+Calculate
+\begin{align*}
+y'(x)=&\dfrac{d}{dx}(x^{-\alpha}u(g(x)))\\
+=&-\alpha x^{-\alpha-1}u(g(x))+x^{-\alpha}\dfrac{du(z)}{dz}\Big|_{z=g(x)}\dfrac{dg(x)}{dx}\\
+=&-\alpha x^{-\alpha-1}u(g(x))+\beta\gamma x^{-\alpha+\gamma-1}u'(g(x))\\
+=&-\alpha x^{-1}y(x)+\beta\gamma x^{-\alpha+\gamma-1}u'(g(x))
+\end{align*}
+\begin{align*}
+y''(x)=&\alpha x^{-2}y(x)-\alpha x^{-1}y'(x)+\beta\gamma(-\alpha+\gamma-1)x^{-\alpha+\gamma-2}u'(g(z))\\
+&+\beta\gamma x^{-\alpha+\gamma-1}u''(g(x))\cdot\dfrac{dg(x)}{dx}\\
+=&(\alpha+\alpha^2)x^{-\alpha-2}u(g(x))+\beta\gamma(-2\alpha+\gamma-1)x^{-\alpha+\gamma-2}u'(g(x))\\
+&+\beta^2\gamma^2x^{-\alpha+2\gamma-2}u''(g(x))
+\end{align*}
+Insert into initial equation
+\begin{align*}
+0=&a_1x^{b_1}y''+a_2x^{b_2}y'+a_3x^{b_3}y\\
+=&a_1(\alpha+\alpha^2)x^{b_1-\alpha-2}u(g(x))+a_1\beta\gamma(-2\alpha+\gamma-1)x^{b_1-\alpha+\gamma-2}u'(g(x))\\
+&+a_1\beta^2\gamma^2x^{b_1-\alpha+2\gamma-2}u''(g(x))\\
+&+(-a_2\alpha) x^{b_2-\alpha-1}u(g(x))+a_2\beta\gamma x^{b_2-\alpha+\gamma-1}u'(g(x))+a_3x^{b_3-\alpha}u(g(x))\\
+=&a_1\beta^2\gamma^2x^{b_1-\alpha+2\gamma-2}u''(g(x))\\
+&+\Big(a_1\beta\gamma(-2\alpha+\gamma-1)x^{b_1-\alpha+\gamma-2}+a_2\beta\gamma x^{b_2-\alpha+\gamma-1}\Big)u'(g(x))\\
+&+\Big(a_1(\alpha+\alpha^2)x^{b_1-\alpha-2}-a_2\alpha x^{b_2-\alpha-1}+a_3x^{b_3-\alpha}\Big)u(g(x))
+\end{align*}
+we first notice that
+$$\dfrac{b_1-\alpha+2\gamma-2}{\gamma}=\dfrac{b_1-\alpha+\gamma-2}{\gamma}+1=\dfrac{b_1-\alpha-2}{\gamma}+2$$
+Compare with Bessel equation of order $\nu$
+$$z^2u''(z)+zu'(z)+(z^2-\nu^2)u(z)=0$$
+then we must have
+$$\left\{
+\begin{aligned}
+&a_2=0\vee b_1-\alpha+\gamma-2=b_2-\alpha+\gamma-1\\
+&(b_3-\alpha)/\gamma=(b_1-\alpha-2)/\gamma+2\\
+\end{aligned}
+\right.\Rightarrow \left\{
+\begin{aligned}
+&a_2=0\vee b_2=b_1-1\\
+&\gamma=\dfrac{b_3-b_1+2}{2}\\
+\end{aligned}
+\right.
+$$
+\newpage
+Consider the coefficients
+\begin{align*}
+a_1\beta^2\gamma^2\cdot \beta^{-\frac{b_1-\alpha+2\gamma-2}{\gamma}}&=\Big(a_1\beta\gamma(-2\alpha+\gamma-1)+a_2\beta\gamma\Big) \cdot \beta^{-\frac{b_1-\alpha+\gamma-2}{\gamma} }=a_3\cdot\beta^{-\frac{b_3-\alpha}{\gamma}}
+\end{align*}
+i.e.$$a_1\beta^2\gamma^2=\beta\gamma(a_1(-2\alpha+\gamma-1)+a_2)\beta=a_3$$
+so
+$$\alpha=\dfrac{a_2}{2a_1}-\dfrac{1}{2},\beta=\sqrt{\dfrac{a_3}{a_1}}\dfrac{1}{\gamma}$$
+
+To sum up,
+$$\alpha=\dfrac{a_2}{2a_1}-\dfrac{1}{2},\beta=\sqrt{\dfrac{a_3}{a_1}}\dfrac{2}{b_3-b_1+2}, \gamma=\dfrac{b_3-b_1+2}{2}$$
+
+Constraints: $a_2=0 \vee b_1-b_2=1$
+
+Note: Any other change to the initial equation may lead to failure by use this substitution. Only if there are some more constraints on $a_i,b_i$. 
+\end{document}
