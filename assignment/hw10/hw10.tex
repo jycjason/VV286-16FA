@@ -1,0 +1,441 @@
+\documentclass[a4paper,12pt,titlepage]{article}
+\usepackage{amsmath} 
+\usepackage{amssymb}
+\usepackage[nottoc]{tocbibind}
+\usepackage{float}
+\usepackage{indentfirst}
+\author{\textit{Jiang Yicheng}\\\textit{515370910224}}
+\title{\textbf{VV286\\ Honors Mathematics IV\\
+Ordinary Differential Equations\\
+		Assignment 10}}
+\date{\today}
+\usepackage{extarrows}
+\usepackage{mathrsfs}
+\usepackage{dsfont}
+\usepackage[top=1in, bottom=1 in, left= 1in, right=1 in]{geometry}
+\usepackage{fancyhdr,lastpage}
+	\pagestyle{fancy}
+	\fancyhf{}
+\cfoot{Page \thepage\ of \pageref{LastPage}}
+\usepackage{multirow}
+\usepackage{gauss}
+\usepackage{geometry}
+\usepackage{graphicx}
+\begin{document}
+
+\maketitle
+
+\section*{Exercise 10.1}
+\subsection*{i)}
+$$\langle \dfrac{1}{\sqrt{2}},\dfrac{1}{\sqrt{2}}\rangle=\int_{-1}^{1}\dfrac{1}{\sqrt{2}}\cdot
+ \dfrac{1}{\sqrt{2}}dx=\dfrac{1}{2}(1-(-1))=1$$
+$\forall n,k\in\mathbb{N}^*$,
+$$\langle \cos(\pi nx),\cos(\pi nx)\rangle=\int_{-1}^{1}\cos(\pi nx)\cdot \cos(\pi nx)dx=\dfrac{x+\frac{1}{2n\pi}\sin(2\pi n x)}{2}|_{-1}^1=1$$
+$$\langle \sin(\pi nx),\sin(\pi nx)\rangle=\int_{-1}^{1}\sin(\pi nx)\cdot \sin(\pi nx)dx=\dfrac{x+\frac{1}{2n\pi}\cos(2\pi n x)}{2}|_{-1}^1=1$$
+\begin{align*}
+\langle \dfrac{1}{\sqrt{2}},\sin(\pi nx)\rangle=\int_{-1}^{1}\dfrac{1}{\sqrt{2}}\sin(\pi nx)dx=\dfrac{-\cos(\pi n x)}{\sqrt{2}n\pi}|_{-1}^1=0
+\end{align*}
+\begin{align*}
+\langle \dfrac{1}{\sqrt{2}},\cos(\pi nx)\rangle=\int_{-1}^{1}\dfrac{1}{\sqrt{2}}\cos(\pi nx)dx=\dfrac{\sin(\pi n x)}{\sqrt{2}n\pi}|_{-1}^1=0
+\end{align*}
+\begin{align*}
+\langle \sin(\pi nx),\cos(\pi kx)\rangle=&\int_{-1}^{1}\sin(\pi nx)\cos(\pi kx)dx\\
+=&\int_{-1}^{0}\sin(\pi nx)\cos(\pi kx)dx+\int_{0}^{1}\sin(\pi nx)\cos(\pi kx)dx\\
+=&\int_{1}^{0}\sin(\pi nx)\cos(\pi kx)dx+\int_{0}^{1}\sin(\pi nx)\cos(\pi kx)dx\\
+=&0
+\end{align*}
+So $\mathcal{B}=\lbrace \dfrac{1}{\sqrt{2}},\cos(\pi nx),\sin(\pi nx)\rbrace_{n=1}^{\infty}$ is an orthonormal system in $L^2([-1, 1])$.
+
+\subsection*{ii)}
+Since $\lbrace e_n\rbrace$ is an orthonormal system in $L^2([-1,1])$, $\forall n,k\in\mathbb{N},n\neq k$
+$$\langle e_n,e_n\rangle=\int_{-1}^1e^2_n(x)dx=1,\langle e_n,e_k\rangle=\int_{-1}^1e_n(x)e_k(x)dx=0$$
+so $\forall n,k\in\mathbb{N},n\neq k$
+\begin{align*}
+\langle \tilde{e}_n,\tilde{e}_n\rangle=&\dfrac{2}{b-a}\int_{a}^be^2_n\Big(\dfrac{2}{b-a}\Big(x-\dfrac{b+a}{2}\Big)\Big)dx\xlongequal{t=\frac{2}{b-a}(x-\frac{b+a}{2})}\dfrac{2}{b-a}\int_{-1}^{1}e^2_n(t)\cdot\dfrac{b-a}{2}dt=1
+\end{align*}
+\begin{align*}
+\langle \tilde{e}_n,\tilde{e}_k\rangle=&\dfrac{2}{b-a}\int_{a}^be_n\Big(\dfrac{2}{b-a}\Big(x-\dfrac{b+a}{2}\Big)\Big)e_k\Big(\dfrac{2}{b-a}\Big(x-\dfrac{b+a}{2}\Big)\Big)dx\\\xlongequal{t=\frac{2}{b-a}(x-\frac{b+a}{2})}&\dfrac{2}{b-a}\int_{-1}^{1}e_n(t)e_k(t)\cdot\dfrac{b-a}{2}dt=0
+\end{align*}
+So $\lbrace \tilde{e}_n\rbrace$ is an orthonormal system in $L^2([a, b])$.
+\subsection*{iii)}
+For the spaces $L^2([-\pi,\pi])$, an orthonormal systems is
+$$\lbrace \dfrac{1}{\sqrt{2}}\sqrt{\dfrac{2}{\pi-(-\pi)}},\sqrt{\dfrac{2}{\pi-(-\pi)}}\cos(\dfrac{2}{\pi-(-\pi)}\pi nx),\sqrt{\dfrac{2}{\pi-(-\pi)}}\sin(\dfrac{2}{\pi-(-\pi)}\pi nx)\rbrace_{n=1}^{\infty}$$
+i.e.
+$$\lbrace \dfrac{1}{\sqrt{2\pi}},\dfrac{1}{\sqrt{\pi}}\cos(nx),\dfrac{1}{\sqrt{\pi}}\sin(nx)\rbrace_{n=1}^{\infty}$$
+
+For the spaces $L^2([0,L])$, an orthonormal systems is
+$$\lbrace \dfrac{1}{\sqrt{2}}\sqrt{\dfrac{2}{L-0}},\sqrt{\dfrac{2}{L-0}}\cos(\pi n\dfrac{2}{L-0}(x-\dfrac{L+0}{2})),\sqrt{\dfrac{2}{L-0}}\sin(\pi n\dfrac{2}{L-0}(x-\dfrac{L+0}{2}))\rbrace_{n=1}^{\infty}$$
+i.e.
+$$\lbrace \dfrac{1}{\sqrt{L}},(-1)^n\sqrt{\dfrac{2}{L}}\cos(\dfrac{2\pi n}{L}x),(-1)^n\sqrt{\dfrac{2}{L}}\sin(\dfrac{2\pi n}{L}x)\rbrace_{n=1}^{\infty}$$
+\section*{Exercise 10.2}
+\begin{align*}
+\langle x^2,\dfrac{1}{\sqrt{2}}\rangle=\int_{-1}^1\dfrac{1}{\sqrt{2}}x^2dx=\dfrac{\sqrt{2}}{3}
+\end{align*}
+\begin{align*}
+\langle x^2,\cos(\pi nx)\rangle=&\int_{-1}^1x^2\cos(\pi nx)dx\\
+=&\dfrac{1}{\pi n}(x^2\sin(\pi nx)|_{-1}^1-2\int_{-1}^1x\sin(\pi nx)dx)\\
+=&\dfrac{2}{\pi n}(\dfrac{1}{\pi n}(x\cos(\pi nx)|_{-1}^1-\int_{-1}^1\cos(\pi nx)dx))\\
+=&\dfrac{2}{\pi^2n^2}(2\cdot(-1)^{n})\\
+=&\dfrac{4(-1)^n}{\pi^2n^2}
+\end{align*}
+\begin{align*}
+\langle x^2,\sin(\pi nx)\rangle=&\int_{-1}^1x^2\sin(\pi nx)dx\\
+=&-\dfrac{1}{\pi n}(x^2\cos(\pi nx)|_{-1}^1-2\int_{-1}^1x\cos(\pi nx)dx)\\
+=&\dfrac{2}{\pi n}(\dfrac{1}{\pi n}(x\sin(\pi nx)|_{-1}^1-\int_{-1}^1\sin(\pi nx)dx))\\
+=&0
+\end{align*}
+So the Fourier series of the function $f(x)=x^2,x\in[-1,1]$ is
+$$f(x)=\dfrac{\sqrt{2}}{3}\cdot\dfrac{1}{\sqrt{2}}+\sum\limits_{n=1}^{\infty}\dfrac{4(-1)^n}{\pi^2n^2}\cos(\pi nx)=\dfrac{1}{3}+\sum\limits_{n=1}^{\infty}\dfrac{4(-1)^n}{\pi^2n^2}\cos(\pi nx)$$
+
+Since $x\in[-1,1]$, then
+$$1=f(1)=\dfrac{1}{3}+\sum\limits_{n=1}^{\infty}\dfrac{4(-1)^n}{\pi^2n^2}\cos(\pi n)\Rightarrow \dfrac{2}{3}=\dfrac{4}{\pi^2}\sum\limits_{n=1}^{\infty}\dfrac{1}{n^2}\Rightarrow \sum\limits_{n=1}^{\infty}\dfrac{1}{n^2}=\dfrac{\pi^2}{6}$$
+$$0=f(0)=\dfrac{1}{3}+\sum\limits_{n=1}^{\infty}\dfrac{4(-1)^n}{\pi^2n^2}\cos(0)\Rightarrow 0=\dfrac{1}{3}+\dfrac{4}{\pi^2}\sum\limits_{n=1}^{\infty}\dfrac{(-1)^n}{n^2}\Rightarrow \sum\limits_{n=1}^{\infty}\dfrac{(-1)^n}{n^2}=-\dfrac{\pi^2}{12}$$
+To sum up,
+$$\sum\limits_{k=1}^{\infty}\dfrac{1}{k^2}=\dfrac{\pi^2}{6},\quad\quad\sum\limits_{k=1}^{\infty}\dfrac{(-1)^{k+1}}{k^2}=\dfrac{\pi^2}{12}$$
+
+\section*{Exercise 10.3}
+Set $u(x,t)=X(x)T(t)$ and we obtain that
+$$X(x)T''(t)+c^2X''''(x)T(t)=0$$
+Since the left hand side depends only on $t$ and the right-hand side depends only on $x$, they must both be constant. Set$\dfrac{1}{c^2T}T_{tt}=-\dfrac{1}{X}X_{xxxx}=\lambda\in\mathbb{R}$, then
+$$X''''=-\lambda X, T''=c^2\lambda T$$
+and Dirichlet boundary conditions and initial conditions become
+$$X(0)T(t)=X(l)T(t)=0,\,\,X''(0)T(t)=X''(l)T(t)=0,t\in\mathbb{R}^+$$
+$$X(x)T(0)=x(l-x),\,\,X(x)T'(0)=0,x\in(0,l)$$
+So either $\forall t>0, T=0$ or $X(0)=X(l)=X''(0)=X''(l)=0$, and $T'(0)=0$
+\begin{enumerate}
+\item $X(0)=X(l)=X''(0)=X''(l)=0$
+
+Since $X''''=-\lambda X$, we can make an ansatz of the form $X_{\lambda}(x)=e^{\rho(\lambda)x}$ and get that
+$$(\rho(\lambda))^4=-\lambda$$
+\begin{enumerate}
+\item $\lambda>0$
+
+Then $\rho(\lambda)=\pm\dfrac{\sqrt[4]{4\lambda}}{2}(1+i),\pm\dfrac{\sqrt[4]{4\lambda}}{2}(1-i)$
+So the general solution is given by
+\begin{align*}
+X_{\lambda}(x)=&c_1e^{\frac{\sqrt[4]{4\lambda}}{2}(1+i)x}+c_2e^{-\frac{\sqrt[4]{4\lambda}}{2}(1+i)x}+c_3e^{\frac{\sqrt[4]{4\lambda}}{2}(1-i)x}+c_4e^{-\frac{\sqrt[4]{4\lambda}}{2}(1-i)x}\\
+=&e^{\frac{\sqrt[4]{4\lambda}}{2}x}(C_1\cos(\frac{\sqrt[4]{4\lambda}}{2}x)+C_2\sin(\frac{\sqrt[4]{4\lambda}}{2}x))\\
+&+e^{-\frac{\sqrt[4]{4\lambda}}{2}x}(C_3\cos(\frac{\sqrt[4]{4\lambda}}{2}x)+C_4\sin(\frac{\sqrt[4]{4\lambda}}{2}x))\\
+=&(e^{\frac{\sqrt[4]{4\lambda}}{2}x}C_1+e^{-\frac{\sqrt[4]{4\lambda}}{2}x}C_3)\cos(\frac{\sqrt[4]{4\lambda}}{2}x)+(e^{\frac{\sqrt[4]{4\lambda}}{2}x}C_2+e^{-\frac{\sqrt[4]{4\lambda}}{2}x}C_4)\sin(\frac{\sqrt[4]{4\lambda}}{2}x)
+\end{align*} 
+Since $X(0)=X(l)=X''(0)=X''(l)=0$
+$$\left\{
+\begin{aligned}
+&C_1+C_3=0\\
+&C_2-C_4=0\\
+&(e^{\frac{\sqrt[4]{4\lambda}}{2}l}C_1+e^{-\frac{\sqrt[4]{4\lambda}}{2}l}C_3)\cos(\frac{\sqrt[4]{4\lambda}}{2}l)+(e^{\frac{\sqrt[4]{4\lambda}}{2}l}C_2+e^{-\frac{\sqrt[4]{4\lambda}}{2}l}C_4)\sin(\frac{\sqrt[4]{4\lambda}}{2}l)=0\\
+&(e^{\frac{\sqrt[4]{4\lambda}}{2}l}C_2-e^{-\frac{\sqrt[4]{4\lambda}}{2}l}C_4)\cos(\frac{\sqrt[4]{4\lambda}}{2}l)+(-e^{\frac{\sqrt[4]{4\lambda}}{2}l}C_1+e^{-\frac{\sqrt[4]{4\lambda}}{2}l}C_3)\sin(\frac{\sqrt[4]{4\lambda}}{2}l)=0\\
+\end{aligned}
+\right.
+$$
+There is no $\lambda>0$ such that $C_1,C_2,C_3,C_4\neq0$.
+\item $\lambda=0$
+
+So $X''''=0,T''=0\Rightarrow X(x)=c_1+c_2x+c_3x^2+c_4x^3, T(t)=d_1+d_2t$. Since $X(0)=X(l)=X''(0)=X''(l)=0,T'(0)=0$, e obtain that
+$$c_1=0,c_1+c_2l+c_3l^2+c_4l^3=0,2c_3=0,2c_3+6c_4l=0,d_2=0$$
+i.e. $c_1=c_2=c_3=c_4=0,d_2=0$. So 
+$$X(x)=0,T(t)=d_1$$
+which doesn't satisfy the initial condition.
+
+\item $\lambda<0$
+
+Then $\rho(\lambda)=\pm\sqrt[4]{|\lambda|},\pm\sqrt[4]{|\lambda|}i$
+So the general solution is given by
+\begin{align*}
+X_{\lambda}(x)=&c_1e^{\sqrt[4]{|\lambda|}x}+c_2e^{-\sqrt[4]{|\lambda|}x}+c_3e^{i\sqrt[4]{|\lambda|}x}+c_4e^{-i\sqrt[4]{|\lambda|}x}
+\end{align*} 
+Since $X(0)=X(l)=X''(0)=X''(l)=0$
+$$\left\{
+\begin{aligned}
+&c_1+c_2+c_3+c_4=0\\
+&c_1+c_2-c_3-c_4=0\\
+&c_1e^{\sqrt[4]{|\lambda|}l}+c_2e^{-\sqrt[4]{|\lambda|}l}+c_3e^{i\sqrt[4]{|\lambda|}l}+c_4e^{-i\sqrt[4]{|\lambda|}l}=0\\
+&c_1e^{\sqrt[4]{|\lambda|}l}+c_2e^{-\sqrt[4]{|\lambda|}l}-c_3e^{i\sqrt[4]{|\lambda|}l}-c_4e^{-i\sqrt[4]{|\lambda|}l}=0\\
+\end{aligned}
+\right.
+$$
+\end{enumerate}
+To have non-trival solution, we obtain that
+$$c_1=c_2=0,c_3=-c_4,\sqrt[4]{|\lambda|}l=k\pi\Rightarrow \lambda_k=-\Big(\dfrac{k\pi}{l}\Big)^4,k=1,2,\cdots$$
+So 
+$$X_k(x)=c_3(e^{i\frac{k\pi}{l}x}-e^{-i\frac{k\pi}{l}x})=A_k\sin\Big(\dfrac{k\pi}{l}x\Big)$$
+and solve the equation $T''=c^2\lambda T$ we obtain that
+$$T_k(t)=B_ke^{i\frac{ck^2\pi^2}{l^2}t}+C_ke^{-i\frac{ck^2\pi^2}{l^2}t}$$
+So
+$$u(x,t)=\sum\limits_{k=1}^{\infty}(B_ke^{i\frac{ck^2\pi^2}{l^2}t}+C_ke^{-i\frac{ck^2\pi^2}{l^2}t})(A_k\sin\Big(\dfrac{k\pi}{l}x\Big))$$
+Considering the initial condition $u(x,0)=x(l-x),u_t(x,0)=0$
+$$\sum\limits_{k=1}^{\infty}(D_k+E_k)(\sin\Big(\dfrac{k\pi}{l}x\Big))=x(l-x),\sum\limits_{k=1}^{\infty}(D_k-E_k)(\sin\Big(\dfrac{k\pi}{l}x\Big))=0$$
+So $D_k=E_k$ and 
+$$u(x,t)=\sum\limits_{k=1}^{\infty}D_k(e^{i\frac{ck^2\pi^2}{l^2}t}+e^{-i\frac{ck^2\pi^2}{l^2}t})(\sin\Big(\dfrac{k\pi}{l}x\Big))=\sum\limits_{k=1}^{\infty}F_k(\cos(\frac{ck^2\pi^2}{l^2}t))(\sin\Big(\dfrac{k\pi}{l}x\Big))$$ 
+Expanding the function $u(x, 0) = x(l-x)$ into a Fourier-sine series, we see that
+\begin{align*}
+x(l-x)=&\sum\limits_{k=1}^{\infty}\dfrac{2}{l}\int_{0}^lx(l-x)(\sin\Big(\dfrac{k\pi}{l}x\Big))dx\cdot (\sin\Big(\dfrac{k\pi}{l}x\Big))\\
+=&\sum\limits_{k=1}^{\infty}\dfrac{4l^2(1-(-1)^k)}{(k\pi)^3}\cdot (\sin\Big(\dfrac{k\pi}{l}x\Big))\\
+\end{align*}
+So $F_k=\dfrac{4l^2(1-(-1)^k)}{(k\pi)^3}$ and
+$$u(x,t)=\sum\limits_{k=1}^{\infty}\dfrac{4l^2(1-(-1)^k)}{(k\pi)^3}(\cos(\frac{ck^2\pi^2}{l^2}t))(\sin\Big(\dfrac{k\pi}{l}x\Big))$$
+\item $\forall t>0,T=0$
+
+Then $u(x,t)=0$ 
+\end{enumerate}
+
+To sum up, the solution of the equation for a vibrating beam of length $l > 0$ is
+$$u(x,t)=\sum\limits_{k=1}^{\infty}\dfrac{4l^2(1-(-1)^k)}{(k\pi)^3}(\cos(\frac{ck^2\pi^2}{l^2}t))(\sin\Big(\dfrac{k\pi}{l}x\Big))$$
+or
+$$u(x,t)=0$$
+\section*{Exercise 10.4}
+Set $u(x,t)=X(x)T(t)$ and we obtain that
+$$c^2X''(x)T(t)-X(x)T''(t)-\mu X(x)T'(t)=0\Rightarrow \dfrac{1}{X}X''=\dfrac{1}{c^2T}(T''+\mu T')$$
+Since the left hand side depends only on $x$ and the right-hand side depends only on $t$, they must both be constant. Set$\dfrac{1}{X}X''=\dfrac{1}{c^2T}(T''+\mu T')=\lambda\in\mathbb{R}$, then
+$$X''=\lambda X, T''+\mu T'=c^2\lambda T$$
+and Dirichlet boundary conditions and initial conditions become
+$$X(0)T(t)=X(L)T(t)=0,t\in\mathbb{R}^+$$
+$$X(x)T(0)=\sin\Big(\dfrac{\pi x}{L}\Big),\,\,X(x)T'(0)=0,x\in[0,L]$$
+So either $\forall t>0, T=0$ or $X(0)=X(L)=0$
+
+\begin{enumerate}
+\item $X(0)=X(L)=0$
+
+We obtain eigenvalues 
+$$\lambda_n=-\Big(\dfrac{n\pi}{L}\Big)^2,n=1,2,3,\cdots$$
+and eigenfunctions
+$$X_n(x)=A_n\sin\Big(\dfrac{n\pi}{L}x\Big)$$
+We next need to solve
+$$T''+\mu T'+\Big(\dfrac{cn\pi}{L}\Big)^2T=0$$
+\begin{enumerate}
+\item $\mu^2<4\Big(\dfrac{c\pi}{L}\Big)^2$
+$$T_n(t)=B_ne^{\frac{-\mu L+i\sqrt{4(cn\pi)^2-\mu^2L^2}}{2L}t}+C_ne^{\frac{-\mu L-i\sqrt{4(cn\pi)^2-\mu^2L^2}}{2L}t}$$
+So
+$$u(x,t)=\sum\limits_{n=1}^{\infty}(B_ne^{\frac{-\mu L+i\sqrt{4(cn\pi)^2-\mu^2L^2}}{2L}t}+C_ne^{\frac{-\mu L-i\sqrt{4(cn\pi)^2-\mu^2L^2}}{2L}t})\cdot (A_n\sin\Big(\dfrac{n\pi}{L}x\Big))$$
+Considering the initial condition $u(x,0)=\sin\Big(\dfrac{\pi x}{L}\Big),u_t(x,0)=0$ and let's set $a_n=\frac{-\mu L+i\sqrt{4(cn\pi)^2-\mu^2L^2}}{2L},b_n=\frac{-\mu L-i\sqrt{4(cn\pi)^2-\mu^2L^2}}{2L}$
+$$\sum\limits_{n=1}^{\infty}(D_n+E_n)(\sin\Big(\dfrac{n\pi}{L}x\Big))=\sin\Big(\dfrac{\pi x}{L}\Big)$$
+$$\sum\limits_{n=1}^{\infty}(a_nD_n+b_nE_n)(\sin\Big(\dfrac{n\pi x}{L}\Big))=0$$
+then $\forall n>1,D_n=E_n=0,D_1+E_1=1$. 
+
+
+$$u(x,t)=u(x,t)=(\dfrac{b_1}{b_1-a_1}e^{a_1t}+\dfrac{a_1}{a_1-b_1}e^{b_1t})\cdot \sin\Big(\dfrac{\pi x}{L}\Big)$$
+
+\item $\mu^2=4\Big(\dfrac{c\pi}{L}\Big)^2$
+$$\forall n> 1, T(t)=B_ne^{\frac{-\mu L+\sqrt{\mu^2L^2-4(cn\pi)^2}}{2L}t}+C_ne^{\frac{-\mu L-\sqrt{\mu^2L^2-4(cn\pi)^2}}{2L}t}$$
+$$ n= 1, T(t)=(B_n+C_nt)e^{-\frac{\mu}{2}t}$$
+set $c_n=\frac{-\mu L+\sqrt{\mu^2L^2-4(cn\pi)^2}}{2L},d_n=\frac{-\mu L-\sqrt{\mu^2L^2-4(cn\pi)^2}}{2L}$ for $n>1$
+
+Considering the initial condition $u(x,0)=\sin\Big(\dfrac{\pi x}{L}\Big),u_t(x,0)=0$
+$$\sum\limits_{n\neq 1}(D_n+E_n)(\sin\Big(\dfrac{n\pi}{L}x\Big))+D_1\sin\Big(\dfrac{\pi}{L}x\Big)=\sin\Big(\dfrac{\pi x}{L}\Big)$$
+$$\sum\limits_{n=2}^{\infty}(c_nD_n+d_nE_n)(\sin\Big(\dfrac{n\pi x}{L}\Big))+(E_1-\dfrac{\mu}{2}D_1)\sin\Big(\dfrac{\pi}{L}x\Big)=0$$
+So $\forall n>1,D_n=E_n=0,D_1=1,E_1=\dfrac{\mu}{2}$. 
+
+
+$$u(x,t)=(1+\dfrac{\mu}{2}e^{-\frac{\mu}{2}t})\cdot \sin\Big(\dfrac{\pi x}{L}\Big)$$
+
+\item $\exists k\in\mathbb{N}^*,k>1, \mu^2=4\Big(\dfrac{ck\pi}{L}\Big)^2$
+$$\forall n>k, T_n(t)=B_ne^{\frac{-\mu L+i\sqrt{4(cn\pi)^2-\mu^2L^2}}{2L}t}+C_ne^{\frac{-\mu L-i\sqrt{4(cn\pi)^2-\mu^2L^2}}{2L}t}$$
+
+$$\forall n< k, T_n(t)=B_ne^{\frac{-\mu L+\sqrt{\mu^2L^2-4(cn\pi)^2}}{2L}t}+C_ne^{\frac{-\mu L-\sqrt{\mu^2L^2-4(cn\pi)^2}}{2L}t}$$
+$$ n= k, T_n(t)=(B_n+C_nt)e^{-\frac{\mu}{2}t}$$
+set $a_n=\frac{-\mu L+i\sqrt{4(cn\pi)^2-\mu^2L^2}}{2L},b_n=\frac{-\mu L-i\sqrt{4(cn\pi)^2-\mu^2L^2}}{2L}$ for $n>k$,\\ $c_n=\frac{-\mu L+\sqrt{\mu^2L^2-4(cn\pi)^2}}{2L},d_n=\frac{-\mu L-\sqrt{\mu^2L^2-4(cn\pi)^2}}{2L}$ for $n<k$
+
+Considering the initial condition $u(x,0)=\sin\Big(\dfrac{\pi x}{L}\Big),u_t(x,0)=0$
+$$\sum\limits_{n\neq k}(D_n+E_n)(\sin\Big(\dfrac{n\pi}{L}x\Big))+D_k\sin\Big(\dfrac{k\pi}{L}x\Big)=\sin\Big(\dfrac{\pi x}{L}\Big)$$
+$$\sum\limits_{n=k+1}^{\infty}(a_nD_n+b_nE_n)(\sin\Big(\dfrac{n\pi x}{L}\Big))+\sum\limits_{n=1}^{k-1}(c_nD_n+d_nE_n)(\sin\Big(\dfrac{n\pi x}{L}\Big))+(E_k-\dfrac{\mu}{2}D_k)\sin\Big(\dfrac{k\pi}{L}x\Big)=0$$
+So $\forall n>1,D_n=E_n=0,D_1+E_1=1$. 
+
+
+$$u(x,t)=(\dfrac{d_1}{d_1-c_1}e^{c_1t}+\dfrac{c_1}{c_1-d_1}e^{d_1t})\cdot \sin\Big(\dfrac{\pi x}{L}\Big)$$
+
+
+\item $\mu^2>4\Big(\dfrac{c\pi}{L}\Big)^2$ while there doesn't exist $k\in\mathbb{N},\mu^2=4\Big(\dfrac{ck\pi}{L}\Big)^2 $
+
+Similarly, we can obtain that 
+$$u(x,t)=(\dfrac{d_1}{d_1-c_1}e^{c_1t}+\dfrac{c_1}{c_1-d_1}e^{d_1t})\cdot \sin\Big(\dfrac{\pi x}{L}\Big)$$
+
+
+\end{enumerate}
+\item $\forall t>0,T=0$
+
+Then $u(x,t)=0$
+\end{enumerate}
+
+To sum up, the solution of the equation for damped wave equation is
+\begin{enumerate}
+\item $\mu^2>4\Big(\dfrac{c\pi}{L}\Big)^2$, set $c_1=\frac{-\mu L+\sqrt{\mu^2L^2-4(c\pi)^2}}{2L},d_1=\frac{-\mu L-\sqrt{\mu^2L^2-4(c\pi)^2}}{2L}$ 
+$$u(x,t)=(\dfrac{d_1}{d_1-c_1}e^{c_1t}+\dfrac{c_1}{c_1-d_1}e^{d_1t})\cdot \sin\Big(\dfrac{\pi x}{L}\Big)$$
+\item $\mu^2=4\Big(\dfrac{c\pi}{L}\Big)^2$
+$$u(x,t)=(1+\dfrac{\mu}{2}e^{-\frac{\mu}{2}t})\cdot \sin\Big(\dfrac{\pi x}{L}\Big)$$
+\item $\mu^2<4\Big(\dfrac{cn\pi}{L}\Big)^2$, set$a_1=\frac{-\mu L+i\sqrt{4(c\pi)^2-\mu^2L^2}}{2L},b_1=\frac{-\mu L-i\sqrt{4(c\pi)^2-\mu^2L^2}}{2L}$
+$$u(x,t)=u(x,t)=(\dfrac{b_1}{b_1-a_1}e^{a_1t}+\dfrac{a_1}{a_1-b_1}e^{b_1t})\cdot \sin\Big(\dfrac{\pi x}{L}\Big)$$
+\end{enumerate}
+or
+$$u(x,t)=0$$
+
+\section*{Exercise 10.5}
+Set $u(x,y)=X(x)Y(y)$ and we obtain that
+$$X''(x)Y(y)+X(x)Y''(y)=X(x)Y(y)\Rightarrow \dfrac{1}{X}X''=\dfrac{1}{Y}(Y-Y'')$$
+Since the left hand side depends only on $x$ and the right-hand side depends only on $y$, they must both be constant. Set$\dfrac{1}{X}X''=\dfrac{1}{Y}(-Y''+Y)=\lambda\in\mathbb{R}$, then
+$$X''=\lambda X, Y''=(1-\lambda)Y$$
+and Dirichlet boundary conditions become
+$$X(0)Y(y)=X(\pi)Y(y)=X(x)Y(0)=0,X(x)Y(a)=1,(x,y)\in[0,\pi]\times[0,a]$$
+So $Y(0)=0,X(x)Y(a)=1$ and either $\forall 0<y<a, Y=0$ or $X(0)=X(\pi)=0$
+\begin{enumerate}
+\item $X(0)=X(\pi)=0$
+
+We obtain eigenvalues 
+$$\lambda_n=-\Big(\dfrac{n\pi}{\pi}\Big)^2=-n^2,n=1,2,3,\cdots$$
+and eigenfunctions
+$$X_n(x)=A_n\sin\Big(\dfrac{n\pi}{\pi}x\Big)=A_n\sin(nx)$$
+We next need to solve
+$$Y''=(1+n^2)Y$$
+we obtain that
+$$Y_n(y)=B_ne^{\sqrt{1+n^2}y}+C_ne^{-\sqrt{1+n^2}y}$$
+
+Since $Y(0)=0$, $B_n+C_n=0$,
+$$Y_n(y)=B_n(e^{\sqrt{1+n^2}y}-e^{-\sqrt{1+n^2}y})$$
+So
+$$u(x,y)=\sum\limits_{n=1}^{\infty}D_n(e^{\sqrt{1+n^2}y}-e^{-\sqrt{1+n^2}y})(\sin(nx))$$
+
+Expanding the function $u(x, a) = 1$ into a Fourier-sine series, we see that
+\begin{align*}
+1=&\sum\limits_{n=1}^{\infty}\dfrac{2}{\pi}\int_{0}^{\pi}1\cdot(\sin(nx))dx\cdot (\sin(n x))\\
+=&\sum\limits_{n=1}^{\infty}\dfrac{1-(-1)^n}{n}\cdot (\sin(nx))\\
+\end{align*}
+So $D_n=\dfrac{1-(-1)^n}{n(e^{\sqrt{1+n^2}a}-e^{-\sqrt{1+n^2}a})}$ and
+$$u(x,y)=\sum\limits_{n=1}^{\infty}\dfrac{(1-(-1)^n)(e^{\sqrt{1+n^2}y}-e^{-\sqrt{1+n^2}y})}{n(e^{\sqrt{1+n^2}a}-e^{-\sqrt{1+n^2}a})}\sin(nx)$$
+\item
+$\forall 0<y<a, Y=0$ then $u(x,y)=0$
+
+\end{enumerate}
+
+So the solution is
+$$u(x,y)=\sum\limits_{n=1}^{\infty}\dfrac{(1-(-1)^n)(e^{\sqrt{1+n^2}y}-e^{-\sqrt{1+n^2}y})}{n(e^{\sqrt{1+n^2}a}-e^{-\sqrt{1+n^2}a})}\sin(nx)$$
+or
+$$u(x,y)=0$$
+
+\section*{Exercise 10.6}
+Set $u(x,t)=X(x)T(t)$ and we obtain that
+$$X(x)T''(t)+(\alpha+\beta)X(x)T'(t)+\alpha\beta X(x)T(t)=c^2X''(x)T(t)\Rightarrow \dfrac{1}{X}X''=\dfrac{1}{c^2T}(T''+(\alpha+\beta)T'+\alpha\beta T)$$
+Since the left hand side depends only on $x$ and the right-hand side depends only on $t$, they must both be constant. Set$\dfrac{1}{X}X''=\dfrac{1}{c^2T}(T''+(\alpha+\beta)T'+\alpha\beta T)=\lambda\in\mathbb{R}$, then
+$$X''=\lambda X,T''+(\alpha+\beta)T'+\alpha\beta T=c^2\lambda T$$
+Since $\alpha,\beta>0$, 
+$$T(t)=e^{-\frac{\alpha+\beta}{2}t}G(t)$$
+then 
+$u(x,t)=e^{-\frac{\alpha+\beta}{2}t}v(x,t)$ and therefore $u(0,t)=e^{-\frac{\alpha+\beta}{2}t}v(0,t)$ which can not be turned into
+$$u(0,t)=U_0\cos(\omega t)$$
+ So the telegraph equation does not have a solution of the form $u(x, t) = X(x) \cdot T(t)$.
+
+Set $u(x,t)=U_0e^{-Ax}\cos(\omega t+Bx)$, then we can see that it satisfies the condition and initial signal and
+\begin{align*}
+&-U_0\omega^2e^{-Ax}\cos(\omega t+Bx)-(\alpha+\beta)\omega U_0e^{-Ax}\sin(\omega t+Bx)+\alpha\beta U_0e^{-Ax}\cos(\omega t+Bx)\\
+=&c^2U_0e^{-Ax}((A^2-B^2)\cos(\omega t+Bx)+2AB\sin(\omega t+Bx))\\
+\Rightarrow&(c^2(A^2-B^2)+\omega^2-\alpha\beta)\cos(\omega t+Bx)+(2c^2AB+(\alpha+\beta)\omega)\sin(\omega t+Bx)=0\\
+\Rightarrow&\left\{
+\begin{aligned}
+&c^2(A^2-B^2)+\omega^2-\alpha\beta=0\\
+&2c^2AB+(\alpha+\beta)\omega=0\\
+\end{aligned}
+\right.\\
+\Rightarrow&(c^2(A^2-B^2)+\omega^2-\alpha\beta)\cos(\omega t+Bx)+(2c^2AB+(\alpha+\beta)\omega)\sin(\omega t+Bx)=0\\
+\Rightarrow&\left\{
+\begin{aligned}
+&A^4-\dfrac{\alpha\beta-\omega^2}{c^2}A^2-\Big(\dfrac{\alpha+\beta}{2c^2}\omega\Big)^2=0\\
+&AB=-(\alpha+\beta)\omega/2c^2\\
+\end{aligned}
+\right.\\
+\end{align*}
+Set $f(y)=y^2-\dfrac{\alpha\beta-\omega^2}{c^2}y-\Big(\dfrac{\alpha+\beta}{2c^2}\omega\Big)^2$, then $f(y)<0$. So $f(y)=0$ always have positive solution and therefore the equation always has solution for $A$ and $B$.
+
+So there exists a solution  of the form
+$$u(x,t)=U_0e^{-Ax}\cos(\omega t+Bx)$$
+where $A$ and $B$ is determined by $\left\{
+\begin{aligned}
+&c^2(A^2-B^2)+\omega^2-\alpha\beta=0\\
+&2c^2AB+(\alpha+\beta)\omega=0\\
+\end{aligned}
+\right.$.
+
+
+
+
+
+
+
+
+
+
+\section*{Exercise 10.7}
+Since we know that $J'_{\nu}(x)=\dfrac{1}{2}(J_{\nu-1}(x)-J_{\nu+1}(x))$ and $ 2\nu J_{\nu}(x)=xJ_{\nu+1}(x)+xJ_{\nu-1}(x) $
+
+\begin{align*}
+J'_{\nu}(x)=&\dfrac{1}{2}(J_{\nu-1}(x)-J_{\nu+1}(x))=\dfrac{1}{2}(\dfrac{2\nu}{x}J_{\nu}(x)-J_{\nu+1}(x)-J_{\nu+1}(x))=-J_{\nu+1}(x)+\dfrac{\nu J_{\nu}(x)}{x}
+\end{align*}
+\begin{align*}
+J'_{\nu}(x)=&\dfrac{1}{2}(J_{\nu-1}(x)-J_{\nu+1}(x))=\dfrac{1}{2}(J_{\nu-1}(x)-\dfrac{2\nu}{x}J_{\nu}(x)+J_{\nu-1}(x))=J_{\nu-1}(x)-\dfrac{\nu J_{\nu}(x)}{x}
+\end{align*}
+i.e. $J'_{\nu}(x)=-J_{\nu+1}(x)+\dfrac{\nu J_{\nu}(x)}{x},J'_{\nu}(x)=J_{\nu-1}(x)-\dfrac{\nu J_{\nu}(x)}{x}$. 
+
+When $\beta\rightarrow \alpha$, $\alpha J_{\nu}(\beta)J'_{\nu}(\alpha)-\beta J'_{\nu}(\beta)J_{\nu}(\alpha)\rightarrow0,\alpha^2-\beta^2\rightarrow0$, then we can try to use l'H$\hat{o}$pital's rule and obtain that
+\begin{align*}
+&\lim_{\beta\rightarrow\alpha}\dfrac{\alpha J_{\nu}(\beta)J'_{\nu}(\alpha)-\beta J'_{\nu}(\beta)J_{\nu}(\alpha)}{\alpha^2-\beta^2}\\
+=& \dfrac{\alpha J_{\nu}(\beta)(-J_{\nu+1}(\alpha)+\dfrac{\nu J_{\nu}(\alpha)}{\alpha})-\beta (-J_{\nu+1}(\beta)+\dfrac{\nu J_{\nu}(\beta)}{\beta})J_{\nu}(\alpha)}{\alpha^2-\beta^2}\\
+=&\dfrac{J_{\nu+1}(\beta)J_{\nu}(\alpha)+\beta J_{\nu}(\alpha)(J_{\nu}(\beta)-\dfrac{(\nu+1)(J_{\nu+1}(\beta))}{\beta})-\alpha J_{\nu+1}(\alpha)(-J_{\nu+1}(\beta)+\dfrac{\nu J_{\nu}(\beta)}{\beta})}{-2\beta}\\
+=&\dfrac{-J'_{\nu}(-J_{\nu+1}+\dfrac{\nu J_{\nu}(\alpha)}{\alpha})}{-2\alpha}\\
+=&\dfrac{1}{2}J'_{\nu}(\alpha)^2
+\end{align*}
+So 
+\begin{align*}
+||J_{\nu}(\alpha\sqrt{\cdot})||^2_{L^2([0,1])}=2\int_0^1xJ^2_{\nu}(\alpha x)dx=2\lim_{\beta\rightarrow\alpha}\dfrac{\alpha J_{\nu}(\beta)J'_{\nu}(\alpha)-\beta J'_{\nu}(\beta)J_{\nu}(\alpha)}{\alpha^2-\beta^2}=J'_{\nu}(\alpha)^2
+\end{align*}
+
+\section*{Exercise 10.8}
+\subsection*{i)}
+\begin{align*}
+I_{\nu}(x)=&e^{-\nu\pi i/2}J_{\nu}(ix)\\
+=&e^{-\nu\pi i/2}\sum\limits_{n=0}^{\infty}\dfrac{(-1)^n}{n!\Gamma(1+n+\nu)}\Big(\dfrac{ix}{2}\Big)^{2n+\nu}=e^{-\nu\pi i/2}\sum\limits_{n=0}^{\infty}\dfrac{(-1)^ni^{2n+\nu}}{n!\Gamma(1+n+\nu)}\Big(\dfrac{x}{2}\Big)^{2n+\nu}\\
+=&e^{-\nu\pi i/2}e^{\nu\pi i/2}\sum\limits_{n=0}^{\infty}\dfrac{(-1)^n\cdot(-1)^n}{n!\Gamma(1+n+\nu)}\Big(\dfrac{x}{2}\Big)^{2n+\nu}\\
+=&\sum\limits_{n=0}^{\infty}\dfrac{1}{n!\Gamma(1+n+\nu)}\Big(\dfrac{x}{2}\Big)^{2n+\nu}
+\end{align*}
+So $I_{\nu}(x)=\sum\limits_{m=0}^{\infty}\dfrac{1}{m!\Gamma(1+m+\nu)}\Big(\dfrac{x}{2}\Big)^{2m+\nu}$, and therefore $I_{\nu}(x) \in\mathbb{R}$  for all $x \in \mathbb{R}, I_{\nu}(x) \neq 0$ for $x \neq 0$.  Moreover, 
+\begin{align*}
+J_{-n}(x)=(-1)^nJ_n(x)\Rightarrow& J_{-n}(x)=(e^{i\pi })^nJ_n(x)\\
+\Rightarrow& e^{n\pi i/2}J_{-n}(x)=e^{-n\pi i/2}J_n(x)\\
+\Rightarrow& I_{-n}(x)=I_n(x)
+\end{align*}
+So $I_{-n}(x)=I_n(x)$ for all $n\in\mathbb{N}$
+\subsection*{ii)}
+\begin{align*}
+\lim_{\nu\rightarrow0}K_{\nu}(x)=&\lim_{\nu\rightarrow0}\dfrac{\pi}{2}e^{\nu \pi i/2}(iJ_{\nu}(ix)-Y_{\nu}(ix))\\
+=&\dfrac{\pi}{2}(\lim_{\nu\rightarrow0}iJ_{\nu}(ix)-\lim_{\nu\rightarrow0}Y_{\nu}(ix))\\
+=&\dfrac{\pi}{2}(i\sum\limits_{m=0}^{\infty}\dfrac{1}{m!\Gamma(1+m)}\Big(\dfrac{x}{2}\Big)^{2m}-\dfrac{2}{\pi}J_0(ix)\Big(\ln\Big(\dfrac{ix}{2}\Big)+\gamma\Big)+\dfrac{2}{\pi}\sum\limits_{m=1}^{\infty}\dfrac{(-1)^m\sum\limits_{k=1}^m\dfrac{1}{k}}{(m!)^2}\Big(\dfrac{ix}{2}\Big)^{2k})\\
+=&\dfrac{\pi}{2}i\sum\limits_{m=0}^{\infty}\dfrac{1}{(m!)^2}\Big(\dfrac{x}{2}\Big)^{2m}-\sum\limits_{m=0}^{\infty}\dfrac{1}{(m!)^2}\Big(\dfrac{x}{2}\Big)^{2m}\Big(\ln\Big(\dfrac{x}{2}\Big)+\dfrac{\pi}{2}i+\gamma\Big)+\sum\limits_{m=1}^{\infty}\dfrac{\sum\limits_{k=1}^m\dfrac{1}{k}}{(m!)^2}\Big(\dfrac{x}{2}\Big)^{2m}\\
+=&\sum\limits_{m=1}^{\infty}\dfrac{\sum\limits_{k=1}^m\dfrac{1}{k}-\ln\Big(\dfrac{x}{2}\Big)-\gamma}{(m!)^2}\Big(\dfrac{x}{2}\Big)^{2m}-(\ln\Big(\dfrac{x}{2}\Big)+\gamma)
+\end{align*}
+Since $\ln\Big(\dfrac{x}{2}\Big)$ diverges at $x=0$, $K_0(x)$ diverges at $x=0.$
+\subsection*{iii)}
+First we know that
+\begin{align*}
+&x^2(I_{\nu}(x))''+x(I_{\nu}(x))'-(x^2+\nu^2)I_{\nu}(x)\\
+=&x^2e^{-\nu\pi i/2}J''_{\nu}(ix)(i)^2+xe^{-\nu \pi i/2}J'_{\nu}(ix)i-(x^2+\nu^2)e^{-\nu\pi i/2}J_{\nu}(ix)\\
+=&e^{-\nu\pi i/2}((ix)^2J''_{\nu}(ix)+(ix)J_{\nu}(ix)+((ix)^2-\nu^2)J_{\nu}(ix))\\
+=&0
+\end{align*}
+Also since
+\begin{align*}
+K_{\nu}(x)=&\dfrac{\pi}{2}e^{\nu \pi i/2}(iJ_{\nu}(ix)-Y_{\nu}(ix))\\
+=&\dfrac{\pi}{2}e^{\nu \pi i/2}(iJ_{\nu}(ix)-\dfrac{J_{\nu}(ix)\cos(\nu\pi)-J_{-\nu}(ix)}{\sin(\nu \pi)})\\
+=&\dfrac{\pi}{2}e^{\nu \pi i/2}(\dfrac{i\sin(\nu \pi)J_{\nu}(ix)-J_{\nu}(ix)\cos(\nu\pi)+J_{-\nu}(ix)}{\sin(\nu \pi)})\\
+=&\dfrac{\pi}{2}e^{\nu \pi i/2}\dfrac{-e^{-\nu\pi i}J_{\nu}(ix)+J_{-\nu}(ix)}{\sin(\nu \pi)}\\
+=&\dfrac{\pi}{2}\dfrac{-e^{-\nu\pi i/2}J_{\nu}(ix)+e^{\nu \pi i/2}J_{-\nu}(ix)}{\sin(\nu \pi)}\\
+=&\dfrac{\pi}{2}\dfrac{I_{-\nu}(x)-I_{\nu}(x)}{\sin(\nu \pi)}\\
+\end{align*}
+then
+\begin{align*}
+&x^2(K_{\nu}(x))''+x(K_{\nu}(x))'-(x^2+\nu^2)K_{\nu}(x)\\
+=&\dfrac{\pi}{2\sin(\nu \pi)}((x^2(I_{\nu}(x))''+x(I_{\nu}(x))'-(x^2+\nu^2)I_{\nu}(x))\\
+&-(x^2(I_{-\nu}(x))''+x(I_{-\nu}(x))'-(x^2+(-\nu)^2)I_{\nu}(x)))\\
+=&0
+\end{align*}
+So $I_{\nu}$ and $K_{\nu}$ both satisfy the differential equation
+$$x^2y''+xy'-(x^2+\nu^2)y=0$$
+
+
+
+\end{document}

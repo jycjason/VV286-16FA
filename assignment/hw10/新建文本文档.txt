@@ -1,0 +1,53 @@
+Since the left hand side depends only on $t$ and the right-hand side depends only on $x$, they must both be constant. Set$\dfrac{1}{c^2T}T_{tt}=-\dfrac{1}{X}X_{xxxx}=\lambda\in\mathbb{R}$, then
+$$X''''=-\lambda X, T''=c^2\lambda T$$
+and Dirichlet boundary conditions and initial conditions become
+$$X(0)T(t)=X(l)T(t)=0,\,\,X''(0)T(t)=X''(l)T(t)=0,t\in\mathbb{R}^+$$
+$$X(x)T(0)=x(l-x),\,\,X(x)T'(0)=0,x\in(0,l)$$
+So either $\forall t>0, T=0$ or $X(0)=X(l)=X''(0)=X''(l)=0$, and $T'(0)=0$
+\begin{enumerate}
+\item $X(0)=X(l)=X''(0)=X''(l)=0$
+\begin{enumerate}
+\item $\lambda>0$
+
+Since $X''''=-\lambda X$, we can set $Y(x)=X''(x)+\sqrt{\lambda}iX(x)$ and obtain that
+$$Y''=\sqrt{\lambda}i Y$$
+we then make an ansatz of the form $Y_{\lambda}(x)=e^{\rho(\lambda)x}$ and get that
+$$(\rho(\lambda))^2=\sqrt{\lambda}i\Leftrightarrow \rho(\lambda)=\pm\Big(\dfrac{\sqrt[4]{4\lambda}}{2}+\dfrac{\sqrt[4]{4\lambda}}{2}i\Big)$$
+So the general solution is given by
+\begin{align*}
+Y_{\lambda}(x)=c_1e^{\frac{\sqrt[4]{4\lambda}}{2}(1+i)x}+c_2e^{-\frac{\sqrt[4]{4\lambda}}{2}(1+i)x}
+\end{align*} 
+Since $Y(0)=X''(0)+\sqrt{\lambda}iX(0)=0,Y(l)=X''(l)+\sqrt{\lambda}iX(l)=0$
+$$c_1+c_2=0,(c_1e^{\frac{\sqrt[4]{4\lambda}}{2}l}+c_2e^{-\frac{\sqrt[4]{4\lambda}}{2}l})\cos(\frac{\sqrt[4]{4\lambda}}{2}l)+i(c_1e^{\frac{\sqrt[4]{4\lambda}}{2}l}-c_2e^{-\frac{\sqrt[4]{4\lambda}}{2}l})\sin(\frac{\sqrt[4]{4\lambda}}{2}l)=0$$
+So there is no eigenvalue $\lambda>0$ if $c_1,c_2\neq0$.
+
+\item $\lambda=0$
+
+So $X''''=0,T''=0\Rightarrow X(x)=c_1+c_2x+c_3x^2+c_4x^3, T(t)=d_1+d_2t$. Since $X(0)=X(l)=X''(0)=X''(l)=0,T'(0)=0$, e obtain that
+$$c_1=0,c_1+c_2l+c_3l^2+c_4l^3=0,2c_3=0,2c_3+6c_4l=0,d_2=0$$
+i.e. $c_1=c_2=c_3=c_4=0,d_2=0$. So 
+$$X(x)=0,T(t)=d_1$$
+which doesn't satisfy the initial condition.
+
+\item $\lambda<0$
+Since $X''''=-\lambda X$, we can set $Y(x)=X''(x)-\sqrt{-\lambda}X(x)$ and obtain that
+$$Y''+\sqrt{-\lambda} Y=0$$
+we then make an ansatz of the form $Y_{\lambda}(x)=e^{\rho(\lambda)x}$ and get that
+$$(\rho(\lambda))^2+\sqrt{-\lambda}=0\Leftrightarrow \rho(\lambda)=\pm\sqrt[4]{-\lambda}i$$
+So the general solution is given by
+\begin{align*}
+Y_{\lambda}(x)=c_1e^{i\sqrt[4]{-\lambda}x}+c_2e^{-i\sqrt[4]{-\lambda}x}
+\end{align*} 
+Since $Y(0)=X''(0)+\sqrt{-\lambda}X(0)=0,Y(l)=X''(l)+\sqrt{-\lambda}X(l)=0$
+$$c_1+c_2=0,c_1e^{i\sqrt[4]{-\lambda}l}+c_2e^{-i\sqrt[4]{-\lambda}l}=0$$
+So eigenvalue is $\lambda_k=-\Big(\dfrac{k\pi}{l}\Big)^4$ where $k\in\mathbb{N}^*$ and
+$$Y_{k}(x)=C_k\cdot \sin(\dfrac{k\pi}{l} x)$$
+Since $Y(x)=X''(x)-\sqrt{-\lambda}X(x)=X''(x)-\Big(\dfrac{k\pi}{l}\Big)^2X(x)$, we get that
+$$X_k(x)=c_1e^{\frac{k\pi}{l}x}+c_2e^{-\frac{k\pi}{l}x}-\dfrac{l^2}{2(k\pi)^2}C_k\sin(\dfrac{k\pi}{l} x)$$
+Since $X(0)=X(l)=X''(0)=X''(l)=0$, $c_1=c_2=0$. So
+$$X_k(x)=-\dfrac{l^2}{2(k\pi)^2}C_k\sin(\dfrac{k\pi}{l} x)$$
+
+\end{enumerate}
+\item $\forall t>0,T=0$
+
+\end{enumerate}

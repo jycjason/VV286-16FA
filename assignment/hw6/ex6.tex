@@ -1,0 +1,411 @@
+\documentclass[a4paper,12pt,titlepage]{article}
+\usepackage{amsmath} 
+\usepackage{amssymb}
+\usepackage[nottoc]{tocbibind}
+\usepackage{float}
+\usepackage{indentfirst}
+\author{\textit{Jiang Yicheng}\\\textit{515370910224}}
+\title{\textbf{VV286\\ Honors Mathematics IV\\
+Ordinary Differential Equations\\
+		Assignment 6}}
+\date{\today}
+\usepackage{extarrows}
+\usepackage{mathptmx}
+\usepackage[top=1 in, bottom=0.8 in, left= 1in, right=1 in]{geometry}
+\usepackage{fancyhdr,lastpage}
+	\pagestyle{fancy}
+	\fancyhf{}
+\cfoot{Page \thepage\ of \pageref{LastPage}}
+\usepackage{multirow}
+\usepackage{gauss}
+\usepackage{geometry}
+\usepackage{graphicx}
+\begin{document}
+
+\maketitle
+
+\section*{Exercise 6.1}
+According to theorem 2.2.20 and 2.2.18,
+\begin{align*}
+c_n=\dfrac{f^{(n)}(z_0)}{n!}=\dfrac{\dfrac{n!}{2\pi i}\oint_{\partial B_r(z_0) }\dfrac{f(\zeta)}{(\zeta-z_0)^{n+1}}d\zeta}{n!}=\dfrac{1}{2\pi i}\oint_{\partial B_r(z_0) }\dfrac{f(\zeta)}{(\zeta-z_0)^{n+1}}d\zeta
+\end{align*}
+So
+$$|c_n|=\dfrac{1}{2\pi}\Big|\oint_{\partial B_r(z_0) }\dfrac{f(\zeta)}{(\zeta-z_0)^{n+1}}d\zeta\Big|\leqslant\dfrac{2\pi r}{2\pi}\dfrac{|f(\zeta)|}{|\zeta-z_0|^{n+1}}\leqslant r\dfrac{M}{r^{n+1}}=\dfrac{M}{r^n}$$
+i.e. $|c_n|\leqslant\dfrac{M}{r^n}$
+\section*{Exercise 6.2}
+\subsection*{i)}
+If $f:\mathbb{C}\rightarrow\mathbb{C}$ is a bounded, entire function, then for some $M > 0$
+$$|f(z)|\leqslant M$$
+for all $z\in\mathbb{C}$. Then if we set that $f(z)=\sum\limits_{n=0}^{\infty}c_nz^n$, $\forall r>0$ we have
+$$|c_n|\leqslant\dfrac{M}{r^n}$$
+So $c_0\leqslant M, \forall n>0,c_n=0$. So $f$ is constant.
+
+To sum up, any bounded, entire function must be constant.
+
+\subsection*{ii)}
+If $f$ is a polynomial of degree $n \geqslant 1$, then $f$ is not a constant. And therefore, according to Liouville's Theorem, $f$ is unbounded or not entire. While any polynomial is entire, then $f$ is unbounded.
+
+Assume that $f$ has no zero, then define $g:=\dfrac{1}{f}$. Since $f$ is unbounded and entire polynomial, $g$ is bounded and entire. And therefore, according to Liouville's Theorem, $g$ is constant. So $f=\dfrac{1}{g}$ is constant. This leads to contradiction. 
+
+So $f$ at least has one zero.
+
+
+
+\section*{Exercise 6.3}
+Since $h$ has a simple zero at $z_0$, in a small disc centered at $z_0$, $h$ has the expansion
+$$h(z)=\sum\limits_{i=1}^{\infty}a_i(z-z_0)^i$$  
+so $\dfrac{h(z)-h(z_0)}{z-z_0}=a_1+\sum\limits_{i=2}^{\infty}a_i(z-z_0)^{i-1}$. Since  $h$ has a simple zero at $z_0$, $a_1\neq0$. Then
+$$h'(z_0)=\underset{z\rightarrow z_0}{lim}\dfrac{h(z)-h(z_0)}{z-z_0}=a_1\neq0$$
+Moreover, since $\dfrac{g}{h}$ has a simple pole at $z_0$,
+
+$$res_{z_0} \dfrac{g(z)}{h(z)} = \underset{z\rightarrow z_0}{lim}
+(z-z_0)\dfrac{g(z)}{h(z)}= \underset{z\rightarrow z_0}{lim}
+\dfrac{g(z)}{\dfrac{h(z)-h(z_0)}{(z-z_0)}}=\dfrac{g(z_0)}{h'(z_0)}$$
+So $res_{z_0} \dfrac{g(z)}{h(z)}=\dfrac{g(z_0)}{h'(z_0)}$.
+
+
+\section*{Exercise 6.4}
+\subsection*{i)$\int_{-\infty}^{\infty}  \dfrac{\cos x}{x^2+a^2}dx$}
+Set $f(z)=\dfrac{e^{iz}}{z^2+a^2}$. 
+Set $C_R = \lbrace z \in \mathbb{C}: z = R\cdot e^{i\theta}, 0 \leqslant \theta \leqslant \pi\rbrace$ be a semi-circle segment in the upper half-plane and $R>a$. Then
+$$\underset{0\leqslant \theta\leqslant\pi}{sup}
+\big|\dfrac{1}{R^2e^{2i\theta}+a^2}\big|\xrightarrow{R\rightarrow\infty}0$$
+According to Jordan's Lemma, 
+$$\underset{R\rightarrow \infty}{lim}\int_{C_R}f(z)dz=0$$
+Since $f$ has two poles $z_1=ai,z_2=-ai$.
+\begin{align*}
+rez_{ai}f=\underset{z\rightarrow ai}{lim}
+(z-ai)\dfrac{e^{iz}}{z^2+a^2}=\dfrac{e^{-a}}{2ai},rez_{-ai}f=\underset{z\rightarrow -ai}{lim}
+(z+ai)\dfrac{e^{iz}}{z^2+a^2}=-\dfrac{e^{a}}{2ai}
+\end{align*}
+Use toy contour $\ell= \lbrace z \in \mathbb{C}: z = R\cdot e^{i\theta}, 0 \leqslant \theta \leqslant \pi \vee -R\leqslant z\leqslant R\rbrace$, $R>a$, then according to The Residue Theorem, 
+$$\int_{-R}^Rf(z)dz+\int_{C_R}f(z)dz=\int_{\ell}f(z)=2\pi irez_{ai}f=\pi \dfrac{e^{-a}}{a}$$
+So
+$$\int_{-\infty}^{\infty}\dfrac{\cos x+i\sin x}{x^2+a^2}dx=\int_{-\infty}^{\infty}f(z)dz=\underset{R\rightarrow \infty}{lim}(\int_{-R}^Rf(z)dz+\int_{C_R}f(z)dz)=\pi \dfrac{e^{-a}}{a}$$
+
+So $$\int_{-\infty}^{\infty}\dfrac{\cos x}{x^2+a^2}dx=\pi \dfrac{e^{-a}}{a}$$
+
+\subsection*{ii)$\int_{-\infty}^{\infty}  \dfrac{x\sin x}{x^2+a^2}dx$}
+Set $f(z)=\dfrac{ze^{iz}}{z^2+a^2}$. 
+Set $C_R = \lbrace z \in \mathbb{C}: z = R\cdot e^{i\theta}, 0 \leqslant \theta \leqslant \pi\rbrace$ be a semi-circle segment in the upper half-plane and $R>a$. Then
+$$\underset{0\leqslant \theta\leqslant\pi}{sup}
+\big|\dfrac{Re^{i\theta}}{R^2e^{2i\theta}+a^2}\big|\xrightarrow{R\rightarrow\infty}0$$
+According to Jordan's Lemma, 
+$$\underset{R\rightarrow \infty}{lim}\int_{C_R}f(z)dz=0$$
+Since $f$ has two poles $z_1=ai,z_2=-ai$.
+\begin{align*}
+rez_{ai}f=\underset{z\rightarrow ai}{lim}
+(z-ai)\dfrac{ze^{iz}}{z^2+a^2}=\dfrac{aie^{-a}}{2ai}=e^{-a}/2
+\end{align*}
+Use toy contour $\ell= \lbrace z \in \mathbb{C}: z = R\cdot e^{i\theta}, 0 \leqslant \theta \leqslant \pi \vee -R\leqslant z\leqslant R\rbrace$, $R>a$, then according to The Residue Theorem, 
+$$\int_{-R}^Rf(z)dz+\int_{C_R}f(z)dz=\int_{\ell}f(z)=2\pi irez_{ai}f=\pi e^{-a}i$$
+So
+$$\int_{-\infty}^{\infty}\dfrac{x\cos x+ix\sin x}{x^2+a^2}dx=\int_{-\infty}^{\infty}f(z)dz=\underset{R\rightarrow \infty}{lim}(\int_{-R}^Rf(z)dz+\int_{C_R}f(z)dz)=\pi e^{-a}i$$
+
+So $$\int_{-\infty}^{\infty}\dfrac{x\sin x}{x^2+a^2}dx=\pi e^{-a}$$
+
+\section*{Exercise 6.5}
+Set $f(z)=\dfrac{1}{1+z^4}$. 
+Set $C_R = \lbrace z \in \mathbb{C}: z = R\cdot e^{i\theta}, 0 \leqslant \theta \leqslant \pi\rbrace$ be a semi-circle segment in the upper half-plane and $R>1$. Then
+$$\Big|\int_{C_R}f(z)dz\Big|=\int_0^{\pi}\Big|\dfrac{iRe^{i\theta}}{1+R^4e^{i4\theta}}\Big|d\theta\leqslant\pi\dfrac{R}{|1+R^4e^{i4\theta}|} \xrightarrow{R\rightarrow\infty}0$$
+Since $f$ has two poles $z_1=e^{i\frac{\pi}{4}},z_2=e^{i\frac{3\pi}{4}}$ in this region
+\begin{align*}
+rez_{e^{i\frac{\pi}{4}}}f=\underset{z\rightarrow e^{i\frac{\pi}{4}}}{lim}
+(z-e^{i\frac{\pi}{4}})\dfrac{1}{1+z^4}=\dfrac{1}{4}e^{-i\frac{3\pi}{4}},
+rez_{e^{i\frac{3\pi}{4}}}f=\underset{z\rightarrow e^{i\frac{3\pi}{4}}}{lim}
+(z-e^{i\frac{3\pi}{4}})\dfrac{1}{1+z^4}=\dfrac{1}{4}e^{-i\frac{\pi}{4}}
+\end{align*}
+Use toy contour $\ell= \lbrace z \in \mathbb{C}: z = R\cdot e^{i\theta}, 0 \leqslant \theta \leqslant \pi \vee -R\leqslant z\leqslant R\rbrace$, $R>1$, then according to The Residue Theorem, 
+$$\int_{-R}^Rf(z)dz+\int_{C_R}f(z)dz=\int_{\ell}f(z)=2\pi i(rez_{e^{i\frac{\pi}{4}}}f+rez_{e^{i\frac{3\pi}{4}}}f)=\dfrac{\pi}{\sqrt{2}}$$
+So
+$$\int_{-\infty}^{\infty}\dfrac{1}{1+x^4}dx=\int_{-\infty}^{\infty}f(z)dz=\underset{R\rightarrow \infty}{lim}(\int_{-R}^Rf(z)dz+\int_{C_R}f(z)dz)=\dfrac{\pi}{\sqrt{2}}$$
+
+So $$\int_{-\infty}^{\infty}\dfrac{1}{1+x^4}dx=\dfrac{\pi}{\sqrt{2}}$$
+
+\section*{Exercise 6.6}
+Set $f(z)=\dfrac{ze^{iz}}{(z^2+4)^2}$. 
+Set $C_R = \lbrace z \in \mathbb{C}: z = R\cdot e^{i\theta}, 0 \leqslant \theta \leqslant \pi\rbrace$ be a semi-circle segment in the upper half-plane and $R>2$.  Then
+$$\underset{0\leqslant \theta\leqslant\pi}{sup}
+\big|\dfrac{Re^{i\theta}}{(R^2e^{2i\theta}+4)^2}\big|\xrightarrow{R\rightarrow\infty}0$$
+According to Jordan's Lemma, 
+$$\underset{R\rightarrow \infty}{lim}\int_{C_R}f(z)dz=0$$
+
+Since $f$ has one pole in order two $z_1=2i$ in this region
+\begin{align*}
+rez_{2i}f=\underset{z\rightarrow 2i}{lim}\dfrac{d}{dz}
+(z-2i)^2\dfrac{ze^{iz}}{(z^2+4)^2}=\dfrac{1}{8e^2}
+\end{align*}
+Use toy contour $\ell= \lbrace z \in \mathbb{C}: z = R\cdot e^{i\theta}, 0 \leqslant \theta \leqslant \pi \vee -R\leqslant z\leqslant R\rbrace$, $R>2$, then according to The Residue Theorem, 
+$$\int_{-R}^Rf(z)dz+\int_{C_R}f(z)dz=\int_{\ell}f(z)=2\pi i(rez_{2i}f)=\dfrac{\pi i}{4e^2}$$
+So
+$$\int_{-\infty}^{\infty}\dfrac{x\cos x+ix\sin x}{(x^2+4)^2}dx=\int_{-\infty}^{\infty}f(z)dz=\underset{R\rightarrow \infty}{lim}(\int_{-R}^Rf(z)dz+\int_{C_R}f(z)dz)=\dfrac{\pi i}{4e^2}$$
+Since $\dfrac{x\sin x}{(x^2+4)^2}$ is even,
+$$\int_{0}^{\infty}\dfrac{x\sin x}{(x^2+4)^2}dx=\dfrac{1}{2}\int_{-\infty}^{\infty}\dfrac{x\sin x}{(x^2+4)^2}dx=\dfrac{\pi }{8e^2}$$
+
+
+\section*{Exercise 6.7}
+Set $f(z)=\dfrac{1}{(1+z^2)^{n+1}}$. 
+Set $C_R = \lbrace z \in \mathbb{C}: z = R\cdot e^{i\theta}, 0 \leqslant \theta \leqslant \pi\rbrace$ be a semi-circle segment in the upper half-plane and $R>1$.  Then
+$$\Big|\int_{C_R}f(z)dz\Big|=\int_0^{\pi}\Big|\dfrac{iRe^{i\theta}}{(1+R^2e^{i2\theta})^{n+1}}\Big|d\theta\leqslant\pi\Big|\dfrac{1}{(1+R^2e^{i2\theta})^{n+1}}\Big|\xrightarrow{R\rightarrow\infty}0$$
+
+Since $f$ has one pole in order $n+1$ $z_1=i$ in this region
+\begin{align*}
+rez_{i}f&=\dfrac{1}{n!}\underset{z\rightarrow i}{lim}\dfrac{d^{n}}{dz^n}
+(z-i)^{n+1}\dfrac{1}{(1+z^2)^{n+1}}\\
+&=\dfrac{(-1)^{n}(n+1)(n+2)\cdots(n+n))}{n!}\dfrac{1}{2^{2n+1}\cdot(-1)^{n}i}\\
+&=-\dfrac{(2n)!}{(n!)^2\cdot2^{2n+1}}i
+\\
+&=-\dfrac{1}{2}\dfrac{1\cdot3\cdot5\cdots(2n-1)}{2\cdot4\cdot6\cdots(2n)}i
+\end{align*}
+Use toy contour $\ell= \lbrace z \in \mathbb{C}: z = R\cdot e^{i\theta}, 0 \leqslant \theta \leqslant \pi \vee -R\leqslant z\leqslant R\rbrace$, $R>1$, then according to The Residue Theorem, 
+$$\int_{-R}^Rf(z)dz+\int_{C_R}f(z)dz=\int_{\ell}f(z)=2\pi i(rez_{i}f)=\dfrac{1\cdot3\cdot5\cdots(2n-1)}{2\cdot4\cdot6\cdots(2n)}\pi$$
+So
+$$\int_{-\infty}^{\infty}\dfrac{1}{(1+x^2)^{n+1}}dx=\int_{-\infty}^{\infty}f(z)dz=\underset{R\rightarrow \infty}{lim}(\int_{-R}^Rf(z)dz+\int_{C_R}f(z)dz)=\dfrac{1\cdot3\cdot5\cdots(2n-1)}{2\cdot4\cdot6\cdots(2n)}\pi$$
+So,
+$$\int_{-\infty}^{\infty}\dfrac{1}{(1+x^2)^{n+1}}dx=\dfrac{1\cdot3\cdot5\cdots(2n-1)}{2\cdot4\cdot6\cdots(2n)}\pi
+$$
+
+\section*{Exercise 6.8}
+\subsection*{i)}
+Set $f(z)=\dfrac{\sqrt{z}}{z^2+a^2}$. 
+Set $C_R = \lbrace z \in \mathbb{C}: z = R\cdot e^{i\theta}, 0 \leqslant \theta \leqslant 3\pi/4\rbrace$ be a $3/4$-circle segment in the upper half-plane and $R>|a|$.  Then
+$$\Big|\int_{C_R}f(z)dz\Big|=\int_0^{3\pi/4}\Big|\dfrac{iRe^{i\theta}\sqrt{R}e^{i\frac{\theta}{2}}}{(a^2+R^2e^{i2\theta})}\Big|d\theta\leqslant\pi\Big|\dfrac{R^{3/2}}{R^2e^{i2\theta}+a^2}\Big|\xrightarrow{R\rightarrow\infty}0$$
+
+Set $C_0 = \lbrace z \in \mathbb{C}: z = r e^{i\frac{3\pi}{4}}, 0 \leqslant r\leqslant R\rbrace$.  Then
+$$\int_{C_0}f(z)dz=\int_0^{R}\dfrac{e^{i\frac{3\pi}{4}}\sqrt{r}e^{i\frac{3\pi}{8}}}{(a^2-r^2)}dr-\int_0^{R}\dfrac{e^{i\frac{3\pi}{4}}\sqrt{r}e^{i\frac{3\pi}{8}}}{(a^2-r^2)}dr=0$$
+
+Since $f$ has one pole in order $1$ $z_1=|a|i$ in this region
+\begin{align*}
+rez_{|a|i}f&=\underset{z\rightarrow |a|i}{lim}(z-|a|i)\dfrac{\sqrt{z}}{z^2+a^2}=-\dfrac{e^{i\frac{\pi}{4}}}{2\sqrt{|a|}}i
+\end{align*}
+Use toy contour $\ell= \lbrace z \in \mathbb{C}: z = R\cdot e^{i\theta}, 0 \leqslant \theta \leqslant 3\pi/4 \vee 0\leqslant z\leqslant R\vee z = r e^{i\frac{3\pi}{4}}, 0 \leqslant r\leqslant R\rbrace$, $R>|a|$, then according to The Residue Theorem, 
+$$\int_{0}^Rf(z)dz+\int_{-C_0}f(z)dz+\int_{C_R}f(z)dz=\int_{\ell}f(z)=2\pi i(rez_{|a|i}f)=\dfrac{\pi e^{i\frac{\pi}{4}}}{\sqrt{|a|}}$$
+So
+$$\int_{0}^{\infty}\dfrac{\sqrt{x}}{x^2+a^2}dx=\int_{0}^{\infty}f(z)dz=Re\underset{R\rightarrow \infty}{lim}(\int_{0}^Rf(z)dz+\int_{C_R}f(z)dz)=\dfrac{\pi}{\sqrt{2|a|}}$$
+So,
+$$\int_{0}^{\infty}\dfrac{\sqrt{x}}{x^2+a^2}dx=\dfrac{\pi}{\sqrt{2|a|}}$$
+
+\subsection*{ii)}
+Set $f(z)=\dfrac{\ln z}{z^2+a^2}$. 
+Set $C_R = \lbrace z \in \mathbb{C}: z = R\cdot e^{i\theta}, 0 \leqslant \theta \leqslant 3\pi/4\rbrace$ be a $3/4$-circle segment in the upper half-plane and $R>|a|$.  Then
+$$\Big|\int_{C_R}f(z)dz\Big|=\int_0^{3\pi/4}\Big|\dfrac{iRe^{i\theta}(\ln R+i\theta)}{R^2e^{i2\theta}+a^2}\Big|d\theta\leqslant3\pi/4\Big|\dfrac{R(\ln R+i\theta)}{R^2e^{i2\theta}+a^2}\Big|\xrightarrow{R\rightarrow\infty}0$$
+
+Set $C_0 = \lbrace z \in \mathbb{C}: z = r e^{i\frac{3\pi}{4}}, 0 \leqslant r\leqslant R\rbrace$.  Then
+$$\int_{C_0}f(z)dz=\int_0^{R}\dfrac{e^{i\frac{3\pi}{4}}(\ln r+i\frac{3\pi}{4})}{(a^2-r^2)}dr=e^{i\frac{3\pi}{4}}(\dfrac{3\pi i}{8}\ln\Big|\dfrac{1+R}{1-R}\Big|+\int_0^R\dfrac{\ln r}{a^2-r^2})\xlongequal{R\rightarrow \infty}0$$
+
+Since $f$ has one pole in order $1$ $z_1=|a|i$ in this region
+\begin{align*}
+rez_{|a|i}f&=\underset{z\rightarrow |a|i}{lim}
+(z-|a|i)\dfrac{\ln z}{z^2+a^2}=\dfrac{1}{4}\dfrac{2\ln |a|+\pi i}{|a|i}
+\end{align*}
+Use toy contour $\ell= \lbrace z \in \mathbb{C}: z = R\cdot e^{i\theta}, 0 \leqslant \theta \leqslant 3\pi/4 \vee 0\leqslant z\leqslant R\vee z = r e^{i\frac{3\pi}{4}}, 0 \leqslant r\leqslant R\rbrace$, $R>|a|$, then according to The Residue Theorem, 
+$$\int_{0}^Rf(z)dz+\int_{-C_0}f(z)dz+\int_{C_R}f(z)dz=\int_{\ell}f(z)=2\pi i(rez_{|a|i}f)=\dfrac{\ln |a|}{|a|}+\dfrac{\pi i}{2|a|}$$
+So
+$$\int_{0}^{\infty}\dfrac{\ln x}{x^2+a^2}dx=\int_{0}^{\infty}f(z)dz=\underset{R\rightarrow \infty}{lim}(\int_{-R}^Rf(z)dz+\int_{C_R}f(z)dz)=\dfrac{\ln |a|}{|a|}$$
+So,
+$$\int_{0}^{\infty}\dfrac{\ln x}{x^2+a^2}dx=\dfrac{\ln |a|}{|a|}$$
+
+
+\section*{Exercise 6.9}
+\subsection*{i)$y''+y=3x+5x^4$}
+Use Heaviside Operator Method,
+\begin{align*}
+D^2y+y=3x+5x^4&\Rightarrow y=\dfrac{1}{1+D^2}(3x+5x^4)\\
+&\Rightarrow y=\sum\limits_{n=0}^{\infty}(-1)^nD^{2n}(3x+5x^4)\\
+&\Rightarrow y=3x+5x^4-60x^2+120+\sum\limits_{n=3}^{\infty}(-1)^nD^{2n-6}(D^6(3x+5x^4))\\
+&\Rightarrow y=5x^4-60x^2+3x+120
+\end{align*}
+
+So the solution is $y=5x^4-60x^2+3x+120$.
+
+\subsection*{ii)$y''+y=e^{\mu x}$}
+Use Heaviside Operator Method,
+\begin{align*}
+D^2y+y=e^{\mu x}&\Rightarrow y=\dfrac{1}{1+D^2}e^{\mu x}\\
+&\Rightarrow y=\sum\limits_{n=0}^{\infty}(-1)^nD^{2n}e^{\mu x}\\
+&\Rightarrow y=\sum\limits_{n=0}^{\infty}(-1)^n\mu^{2n}e^{\mu x}\\
+&\Rightarrow y=\dfrac{e^{\mu x}}{1+\mu^2}
+\end{align*}
+
+So the solution is $y=\dfrac{e^{\mu x}}{1+\mu^2}$.
+
+
+\section*{Exercise 6.10}
+\subsection*{i)$\mathcal{L}(\sinh(bt))$}
+$\forall p>|b|$,
+\begin{align*}
+\mathcal{L}(\sinh (bt))(p)&=\int_0^{\infty}\dfrac{e^{bt}-e^{-bt}}{2}e^{-pt}dt\\
+&=\dfrac{1}{2}\int_0^{\infty}e^{(b-p)t}-e^{-(b+p)t}dt\\
+&=\dfrac{1}{2}\big(\dfrac{1}{b-p}e^{(b-p)t}\big|_0^{\infty}+\dfrac{1}{b+p}e^{-(b+p)t}dt\big|_0^{\infty}\big)\\
+&=\dfrac{1}{2}(\dfrac{1}{b-p}(0-1)+\dfrac{1}{b+p}(0-1)\big)\\
+&=\dfrac{b}{p^2-b^2}
+\end{align*}
+And for $ p\leqslant|b|$, the integral doesn't converge.
+
+So $\mathcal{L}(\sinh (bt))(p)=\dfrac{b}{p^2-b^2}, p>|b|$
+
+\subsection*{ii)$\mathcal{L}(\cos(bt))$}
+$\forall p>0$,
+\begin{align*}
+\mathcal{L}(\cos (bt))(p)&=\int_0^{\infty}\cos(bt)e^{-pt}dt=\dfrac{1}{b}\int_0^{\infty}e^{-pt}d(\sin (bt))\\
+&=\dfrac{1}{b}(\sin(bt)e^{-pt}\big|_0^{\infty}-\int_0^{\infty}\sin(bt)(-pe^{-pt})dt)\\
+&=-\dfrac{p}{b^2}\big(\cos(bt)e^{-pt}\big|_0^{\infty}-\int_0^{\infty}\cos(bt)(-pe^{-pt})dt\big)\\
+&=-\dfrac{p}{b^2}\big(0-1+p\mathcal{L}(\cos (bt))(p)\big)\\
+\end{align*}
+So 
+$$(b^2+p^2)\mathcal{L}(\cos (bt))(p)=p\Rightarrow \mathcal{L}(\cos (bt))(p)=\dfrac{p}{p^2+b^2}$$
+And for $ p\leqslant0$, the integral doesn't converge.
+
+So $\mathcal{L}(\cos (bt))(p)=\dfrac{p}{p^2+b^2}, p>0$
+
+\subsection*{iii)$\mathcal{L}(t\sin(at))$}
+$\forall p>0$,
+\begin{align*}
+\dfrac{d}{dp}\mathcal{L}(\sin (at))(p)&=\dfrac{d}{dp}\int_0^{\infty}\sin(at)e^{-pt}dt=\int_0^{\infty}\sin (at)(-te^{-pt})dt=-\mathcal{L}(t\sin(at))
+\end{align*}
+So 
+$$\mathcal{L}(t\sin(at))=-\dfrac{d}{dp}\mathcal{L}(\sin (at))(p)=-\dfrac{d}{dp}\dfrac{a}{p^2+a^2}=\dfrac{2ap}{(p^2+a^2)^2}$$
+And for $ p\leqslant0$, the integral doesn't converge.
+
+So $\mathcal{L}(t\sin(at))=\dfrac{2ap}{(p^2+a^2)^2}, p>0$
+
+\subsection*{iv)$\mathcal{L}(t^2\sinh(bt))$}
+$\forall p>|b|$,
+\begin{align*}
+\dfrac{d^2}{dp^2}\mathcal{L}(\sin (bt))(p)&=\dfrac{d}{dp}\int_0^{\infty}\sinh (bt)(-te^{-pt})dt\int_0^{\infty}\sinh (bt)t^2e^{-pt}dt=\mathcal{L}(t^2\sinh(bt))
+\end{align*}
+So 
+$$\mathcal{L}(t^2\sinh(bt))=\dfrac{d^2}{dp^2}\mathcal{L}(\sinh (bt))(p)=\dfrac{d^2}{dp^2}\dfrac{b}{p^2-b^2}=\dfrac{d}{dp}\dfrac{-2bp}{(p^2-b^2)^2}=\dfrac{6bp^2+2b^3}{(p^2-b^2)^3}$$
+And for $ p\leqslant|b|$, the integral doesn't converge.
+
+So $\mathcal{L}(t\sin(bt))=\dfrac{6bp^2+2b^3}{(p^2-b^2)^3}, p>|b|$
+
+\subsection*{v)$\mathcal{L}(\sqrt{t})$}
+$\forall p>0$,
+\begin{align*}
+\mathcal{L}(\sqrt{t})(p)&=\int_0^{\infty}\sqrt{t}e^{-pt}dt=p^{-\frac{1}{2}}\int_0^{\infty}(pt)^{\frac{1}{2}}e^{-pt}dt=p^{-\frac{3}{2}}\int_0^{\infty}(z)^{\frac{1}{2}}e^{-z}dz\\
+&=p^{-\frac{3}{2}}\Gamma(\dfrac{1}{2})
+\end{align*}
+And for $ p\leqslant0$, the integral doesn't converge.
+
+So $\mathcal{L}(\sqrt{t})(p)=p^{-\frac{3}{2}}\Gamma(\dfrac{1}{2}), p>0$
+
+\subsection*{vi)$\mathcal{L}(1/\sqrt{t})$}
+$\forall p>0$,
+\begin{align*}
+\mathcal{L}(1/\sqrt{t})(p)&=\int_0^{\infty}1/\sqrt{t}e^{-pt}dt=p^{\frac{1}{2}}\int_0^{\infty}(pt)^{-\frac{1}{2}}e^{-pt}dt=p^{-\frac{1}{2}}\int_0^{\infty}(z)^{-\frac{1}{2}}e^{-z}dz\\
+&=p^{-\frac{1}{2}}\Gamma(-\dfrac{1}{2})
+\end{align*}
+And for $ p\leqslant0$, the integral doesn't converge.
+
+So $\mathcal{L}(\sqrt{t})(p)=p^{-\frac{1}{2}}\Gamma(-\dfrac{1}{2}), p>0$
+\section*{Exercise 6.11}
+\subsection*{i)$y'''-6y''+11y'-6y=e^{4t},y(0)=y'(0)=y''(0)=0$}
+Set $Y(p)=(\mathcal{L}y)(p)$, then
+$$(\mathcal{L}y')(p)=p\cdot(\mathcal{L}y)(p)-y(0)=pY(p) $$
+$$(\mathcal{L}y'')(p)=p\cdot(\mathcal{L}y')(p)-y'(0)=p^2Y(p) $$
+$$(\mathcal{L}y''')(p)=p\cdot(\mathcal{L}y'')(p)-y''(0)=p^3Y(p) $$
+and
+$$(\mathcal{L}e^{4t})(p)=\dfrac{1}{p-4},p>4$$
+So apply Laplace transform to the equation and we get
+\begin{align*}
+(p^3-6p^2+11p-6)Y(p)=\dfrac{1}{p-4}&\Rightarrow Y(p)=\dfrac{1}{(p-1)(p-2)(p-3)(p-4)}\\
+&\Rightarrow Y(p)=-\dfrac{1}{6}\dfrac{1}{p-1}+\dfrac{1}{2}\dfrac{1}{p-2}-\dfrac{1}{2}\dfrac{1}{p-3}+\dfrac{1}{6}\dfrac{1}{p-4}
+\end{align*}
+Since $\mathcal{L}^{-1}\dfrac{1}{p-a}=e^{at}$ for $p>a$, and $p>4$ in this question, 
+$$y(t)=\mathcal{L}^{-1}Y(p)=-\dfrac{1}{6}e^t+\dfrac{1}{2}e^{2t}-\dfrac{1}{2}e^{3t}+\dfrac{1}{6}e^{4t}$$
+So the solution is $y(t)=-\dfrac{1}{6}e^t+\dfrac{1}{2}e^{2t}-\dfrac{1}{2}e^{3t}+\dfrac{1}{6}e^{4t}$
+
+\subsection*{ii)$y''+y'+y=H(t-\pi)-H(t-2\pi), y(0)=1,y'(0)=0$}
+Set $Y(p)=(\mathcal{L}y)(p)$, then
+$$(\mathcal{L}y')(p)=p\cdot(\mathcal{L}y)(p)-y(0)=pY(p)-1 $$
+$$(\mathcal{L}y'')(p)=p\cdot(\mathcal{L}y')(p)-y'(0)=p^2Y(p)-p $$
+
+and
+$$\Big(\mathcal{L}(H(t-\pi)-H(t-2\pi))\Big)(p)=\dfrac{e^{-\pi p}}{p}-\dfrac{e^{-2\pi p}}{p},p>0$$
+So apply Laplace transform to the equation and we get
+\begin{align*}
+&(p^2+p+1)Y(p)=\dfrac{e^{-\pi p}}{p}-\dfrac{e^{-2\pi p}}{p}+p+1\\
+\Rightarrow& Y(p)=\dfrac{2}{\sqrt{3}}\dfrac{\dfrac{\sqrt{3}}{2}}{(p+\dfrac{1}{2})^2+(\dfrac{\sqrt{3}}{2})^2}(\dfrac{e^{-\pi p}}{p}-\dfrac{e^{-2\pi p}}{p}+\dfrac{1}{2})+\dfrac{p+\dfrac{1}{2}}{(p+\dfrac{1}{2})^2+(\dfrac{\sqrt{3}}{2})^2}\\
+\Rightarrow& Y(p)=\dfrac{2}{\sqrt{3}}\mathcal{L}(e^{-\frac{1}{2}t}\sin(\frac{\sqrt{3}}{2}t))\mathcal{L}(H(t-\pi)-H(t-2\pi))+\dfrac{1}{\sqrt{3}}\mathcal{L}(e^{-\frac{1}{2}t}\sin(\frac{\sqrt{3}}{2}t))\\
+&+\mathcal{L}(e^{-\frac{1}{2}t}\cos(\frac{\sqrt{3}}{2}t))
+\end{align*}
+
+For $t\geqslant2\pi$
+\begin{align*}
+&e^{-\frac{1}{2}t}\sin(\frac{\sqrt{3}}{2}t)*((H(t-\pi)-H(t-2\pi))\\
+=&\int_0^t e^{-\frac{1}{2}(t-s)}\sin(\frac{\sqrt{3}}{2}(t-s))\cdot((H(s-\pi)-H(s-2\pi))ds \\
+=&\int_0^t e^{-\frac{1}{2}(t-s)}\sin(\frac{\sqrt{3}}{2}(t-s))\cdot((H(s-\pi)-H(s-2\pi))ds\\
+=&\int_0^{\pi} e^{-\frac{1}{2}(t-s)}\sin(\frac{\sqrt{3}}{2}(t-s))\cdot0ds+\int_{\pi}^{2\pi} e^{-\frac{1}{2}(t-s)}\sin(\frac{\sqrt{3}}{2}(t-s))\cdot 1ds\\
+&+\int_{2\pi}^t e^{-\frac{1}{2}(t-s)}\sin(\frac{\sqrt{3}}{2}(t-s))\cdot0ds\\
+=&e^{\frac{1}{2}(s-t)}(\sin(\frac{\sqrt{3}}{2}(s-t))+\sqrt{3}\cos \frac{\sqrt{3}}{2}(s-t))\Big|_{\pi}^{2\pi}    \\
+=&2e^{\frac{1}{2}(2\pi-t)}\sin(\frac{\sqrt{3}}{2}(2\pi-t)+\dfrac{\pi}{3})-2e^{\frac{1}{2}(\pi-t)}\sin(\frac{\sqrt{3}}{2}(\pi-t)+\dfrac{\pi}{3})
+\end{align*}
+
+For $\pi\leqslant t<2\pi$
+\begin{align*}
+&e^{-\frac{1}{2}t}\sin(\frac{\sqrt{3}}{2}t)*((H(t-\pi)-H(t-2\pi))\\
+=&\int_0^{\pi} e^{-\frac{1}{2}(t-s)}\sin(\frac{\sqrt{3}}{2}(t-s))\cdot0ds+\int_{\pi}^{t} e^{-\frac{1}{2}(t-s)}\sin(\frac{\sqrt{3}}{2}(t-s))\cdot 1ds\\
+=&e^{\frac{1}{2}(s-t)}(\sin(\frac{\sqrt{3}}{2}(s-t))+\sqrt{3}\cos \frac{\sqrt{3}}{2}(s-t))\Big|_{\pi}^{t}    \\
+=&\sqrt{3}-e^{\frac{1}{2}(\pi-t)}\sin(\frac{\sqrt{3}}{2}(\pi-t)+\dfrac{\pi}{3})
+\end{align*}
+
+For $t<\pi$
+\begin{align*}
+&e^{-\frac{1}{2}t}\sin(\frac{\sqrt{3}}{2}t)*((H(t-\pi)-H(t-2\pi))\\
+=&\int_0^{\pi} e^{-\frac{1}{2}(t-s)}\sin(\frac{\sqrt{3}}{2}(t-s))\cdot0ds\\
+=&0
+\end{align*}
+
+So 
+$$y(t)=\left\{
+\begin{aligned}
+&\dfrac{2}{\sqrt{3}}e^{-\frac{1}{2}t}\sin(\frac{\sqrt{3}}{2}t+\dfrac{\pi}{3}),t< \pi\\
+&\sqrt{3}-e^{\frac{1}{2}(\pi-t)}\sin(\frac{\sqrt{3}}{2}(\pi-t)+\dfrac{\pi}{3})+\dfrac{2}{\sqrt{3}}e^{-\frac{1}{2}t}\sin(\frac{\sqrt{3}}{2}t+\dfrac{\pi}{3}),\pi\leqslant t< 2\pi\\
+&2e^{\frac{1}{2}(2\pi-t)}\sin(\frac{\sqrt{3}}{2}(2\pi-t)+\dfrac{\pi}{3})-2e^{\frac{1}{2}(\pi-t)}\sin(\frac{\sqrt{3}}{2}(\pi-t)+\dfrac{\pi}{3}))+\dfrac{2}{\sqrt{3}}e^{-\frac{1}{2}t}\sin(\frac{\sqrt{3}}{2}t+\dfrac{\pi}{3}),2\pi\leqslant t\\
+\end{aligned}
+\right.
+$$
+
+\subsection*{iii)$y''+y=\left\{
+\begin{aligned}
+&\cos t,0\leqslant t\leqslant\pi/2\\
+&0,\pi/2\leqslant t<\infty\\
+\end{aligned}
+\right.=\cos t\cdot H(\dfrac{\pi}{2}-t),y(0)=3,y'(0)=-1$}
+Set $Y(p)=(\mathcal{L}y)(p)$, then
+$$(\mathcal{L}y')(p)=p\cdot(\mathcal{L}y)(p)-y(0)=pY(p)-3 $$
+$$(\mathcal{L}y'')(p)=p\cdot(\mathcal{L}y')(p)-y'(0)=p^2Y(p)-3p+1 $$
+
+So apply Laplace transform to the equation and we get
+\begin{align*}
+&(p^2+1)Y(p)=\mathcal{L}(\cos t\cdot H(\dfrac{\pi}{2}-t))+3p-1\\
+\Rightarrow& Y(p)=\dfrac{1}{p^2+1}\cdot \mathcal{L}(\cos t\cdot H(\dfrac{\pi}{2}-t))+3\dfrac{p}{p^2+1}-\dfrac{1}{p^2+1}\\
+\Rightarrow& Y(p)=\mathcal{L}(\sin t)\cdot\mathcal{L}(\cos t\cdot H(\dfrac{\pi}{2}-t))+3\mathcal{L}(\cos t)-\mathcal{L}(\sin t)
+\end{align*}
+
+For $t\geqslant\dfrac{\pi}{2}$
+\begin{align*}
+&(\sin t)*(\cos t\cdot H(\dfrac{\pi}{2}-t))\\
+=&\int_0^t (\sin (t-s)(\cos s\cdot H(\dfrac{\pi}{2}-s))ds =\dfrac{1}{2}\int_0^{\frac{\pi}{2}} \sin t+\sin(t-2s) ds+0\\
+=&\dfrac{1}{2} (s\sin t\big|_0^{\frac{\pi}{2}}+\dfrac{1}{2}\cos(t-2s)\big|_0^{\frac{\pi}{2}})\\
+=&\dfrac{\pi}{4}\sin t-\dfrac{1}{2}\cos t
+\end{align*}
+
+For $0\leqslant t<\dfrac{\pi}{2}$
+\begin{align*}
+&(\sin t)*(\cos t\cdot H(\dfrac{\pi}{2}-t))\\
+=&\int_0^t (\sin (t-s)(\cos s\cdot H(\dfrac{\pi}{2}-s))ds =\dfrac{1}{2}\int_0^{t} \sin t+\sin(t-2s) ds\\
+=&\dfrac{1}{2} (s\sin t\big|_0^{t}+\dfrac{1}{2}\cos(t-2s)\big|_0^{t})\\
+=&\dfrac{t}{2}\sin t
+\end{align*}
+
+So 
+$$y(t)=\left\{
+\begin{aligned}
+&(\dfrac{\pi}{4}-1)\sin t+\dfrac{5}{2}\cos t,t\geqslant \dfrac{\pi}{2}\\
+&(\dfrac{t}{2}-1)\sin t+3\cos t,0\leqslant t<\dfrac{\pi}{2}\\
+\end{aligned}
+\right.
+$$
+\end{document}
